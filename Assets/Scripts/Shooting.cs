@@ -30,6 +30,13 @@ public class Shooting : MonoBehaviour
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit))
         {
             Debug.Log(hit.collider.gameObject.name);
+            //Instantiate(tempObject, hit.point, Quaternion.identity);
+            Shootable temp = hit.collider.gameObject.GetComponent<Shootable>();
+
+            if (temp != null)
+            {
+                temp.StartExplosion();
+            }
         }
     }
 }
