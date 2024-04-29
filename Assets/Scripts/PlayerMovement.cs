@@ -2,25 +2,26 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float _horizontalMouseSensitivity;
-    [SerializeField] private float _verticalMouseSensitivity;
-    [SerializeField] private float _maxHeadUpAngle;
-    [SerializeField] private float _minHeadDownAngle;
+    [SerializeField] private float horizontalMouseSensitivity;
+    [SerializeField] private float verticalMouseSensitivity;
+    [SerializeField] private float maxHeadUpAngle;
+    [SerializeField] private float minHeadDownAngle;
+    [SerializeField] private float gravity;
 
-    private bool _moving;
-    private bool _hasSpeed;
+    private bool moving;
+    private bool hasSpeed;
 
-    private CharacterController _characterController;
-    private Transform           _head;
+    private CharacterController characterController;
+    private Transform           head;
 
 
     private void Start()
     {
-        _characterController = GetComponent<CharacterController>();
-        _head = GetComponentInChildren<Camera>().transform;
+        characterController = GetComponent<CharacterController>();
+        head = GetComponentInChildren<Camera>().transform;
 
-        _moving = true;
-        _hasSpeed = false;
+        moving = true;
+        hasSpeed = false;
 
     }
 
@@ -52,36 +53,36 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateRotation()
     {
-        if (_moving)
+        if (moving)
         {
             UpdatePlayerRotation();
             UpdateHeadRotation();
             Move();
         }
         else
-            _hasSpeed = false;
+            hasSpeed = false;
         
     }
 
     private void UpdatePlayerRotation()
     {
-        float rotation = Input.GetAxis("Mouse X") * _horizontalMouseSensitivity;
+        float rotation = Input.GetAxis("Mouse X") * horizontalMouseSensitivity;
 
         transform.Rotate(0f, rotation, 0f);
     }
 
     private void UpdateHeadRotation()
     {
-        Vector3 rotation = _head.localEulerAngles;
+        Vector3 rotation = head.localEulerAngles;
 
-        rotation.x -= Input.GetAxis("Mouse Y") * _verticalMouseSensitivity;
+        rotation.x -= Input.GetAxis("Mouse Y") * verticalMouseSensitivity;
 
         if (rotation.x < 180)
-            rotation.x = Mathf.Min(rotation.x, _maxHeadUpAngle);
+            rotation.x = Mathf.Min(rotation.x, maxHeadUpAngle);
         else
-            rotation.x = Mathf.Max(rotation.x, _minHeadDownAngle);
+            rotation.x = Mathf.Max(rotation.x, minHeadDownAngle);
 
-        _head.localEulerAngles = rotation;
+        head.localEulerAngles = rotation;
     }
 
     private void Move()
@@ -91,36 +92,36 @@ public class PlayerMovement : MonoBehaviour
 
         if (x != 0 || z != 0)
         {
-            _hasSpeed = true;
+            hasSpeed = true;
         }
         else
-            _hasSpeed = false;
+            hasSpeed = false;
 
-        Vector3 move = transform.right * z + transform.forward * x;
+        Vector3 move = transform.right * z + transform.forward * x + transform.up * gravity * Time.deltaTime;
 
-        _characterController.Move(move);
+        characterController.Move(move);
     }
 
     public void SetSensitivity(float sensitivity)
     {
-        _horizontalMouseSensitivity = sensitivity;
-        _verticalMouseSensitivity   = sensitivity;
+        horizontalMouseSensitivity = sensitivity;
+        verticalMouseSensitivity   = sensitivity;
     }
 
-    public void EnableMovement() => _moving = true;
+    public void EnableMovement() => moving = true;
 
-    public void DisableMovement() => _moving = false;
+    public void DisableMovement() => moving = false;
 
     public float GetSensitivity()
     {
-        return _horizontalMouseSensitivity;
+        return horizontalMouseSensitivity;
     }
 
     public float GetVerticalSensitivity()
     {
-        return _verticalMouseSensitivity;
+        return verticalMouseSensitivity;
     }
 
-    public bool GetHasSpeed() => _hasSpeed;
+    public bool GetHasSpeed() => hasSpeed;
 
 }
