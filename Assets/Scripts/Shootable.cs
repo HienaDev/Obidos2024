@@ -12,12 +12,17 @@ public class Shootable : MonoBehaviour
     private YieldInstruction wfs;
 
     [SerializeField] private GameObject conffeti;
+    [SerializeField] private float durationOfBadGuy = 10;
+    private YieldInstruction wfsBadGuy;
+
+    public bool BadGuy {  get; private set; }
 
     // Start is called before the first frame update
     void Start()
     {
 
         wfs = new WaitForSeconds(timeToExplode);
+        wfsBadGuy = new WaitForSeconds (durationOfBadGuy);
 
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
 
@@ -32,10 +37,9 @@ public class Shootable : MonoBehaviour
         Debug.Log(skinnedMeshRenderer);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        
+        Debug.Log(gameObject.name +  BadGuy);  
     }
 
     public void StartExplosion()
@@ -58,9 +62,22 @@ public class Shootable : MonoBehaviour
         Instantiate(conffeti, transform);
         GetComponent<Collider>().enabled = false;
 
-        yield return new WaitForSeconds(timeToExplode);
+        yield return wfs;
 
         Destroy(gameObject);
+    }
+
+    public void TurnBadGuy()
+    {
+        StartCoroutine(BadGuyForXSeconds());
+    }
+
+    private IEnumerator BadGuyForXSeconds()
+    {
+
+        BadGuy = true;
+        yield return wfsBadGuy;
+        BadGuy = false;
     }
 
 }
