@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        ShowCursor();
+        //ShowCursor();
     }
 
     public void HideCursor()

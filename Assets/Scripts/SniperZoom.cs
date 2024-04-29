@@ -12,6 +12,8 @@ public class SniperZoom : MonoBehaviour
     [SerializeField] private float howFastZoom;
     private float lerpValue;
 
+    [SerializeField] private GameObject crosshair;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,8 +31,16 @@ public class SniperZoom : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(1)) lerpValue = 0;
-        if (Input.GetMouseButtonUp(1)) lerpValue = 0;
+        if (Input.GetMouseButtonDown(1))
+        {
+            crosshair.SetActive(true); 
+            lerpValue = 0;
+        }
+        if (Input.GetMouseButtonUp(1))
+        {
+            crosshair.SetActive(false);
+            lerpValue = 0;
+        }
 
         if (Input.GetMouseButton(1)) ZoomIn();
         else ZoomOut();
