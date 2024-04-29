@@ -10,6 +10,7 @@ public class RandomVelocityRB : MonoBehaviour
     {
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.velocity = new Vector3 (Random.Range(-4f, 4f), Random.Range(2f, 4f), Random.Range(-4f, 4f));
+        rb.AddForceAtPosition(Vector3.up * 10, new Vector3(-1, -1, -1));
     }
 
     // Update is called once per frame

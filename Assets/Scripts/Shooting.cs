@@ -9,10 +9,17 @@ public class Shooting : MonoBehaviour
     [SerializeField] private GameObject tempObject;
     private Camera cam;
 
+    [SerializeField] private GameObject goodUI;
+    [SerializeField] private GameObject badUI;
+    [SerializeField] private float timerUI = 3;
+    private YieldInstruction wfs;
+
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
+
+        wfs = new WaitForSeconds(timerUI);
     }
 
     // Update is called once per frame
@@ -35,8 +42,21 @@ public class Shooting : MonoBehaviour
 
             if (temp != null)
             {
+                if (temp.BadGuy == true)
+                    StartCoroutine(ActivateForXSeconds(goodUI));
+                else
+                    StartCoroutine(ActivateForXSeconds(badUI));
+
                 temp.StartExplosion();
             }
         }
+    }
+
+    private IEnumerator ActivateForXSeconds(GameObject ui)
+    {
+
+        ui.SetActive(true);
+        yield return wfs;
+        ui.SetActive(false);
     }
 }
