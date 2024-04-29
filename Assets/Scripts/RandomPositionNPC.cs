@@ -7,8 +7,8 @@ using UnityEngine.AI;
 public class RandomPositionNPC : MonoBehaviour
 {
 
-    [SerializeField] private float distance;
-    [SerializeField] private float distanceToRetry;
+    [SerializeField] private float distance = 40;
+    [SerializeField] private float distanceToRetry = 3;
 
     private NavMeshAgent agent;
     private Vector3 nextPosition;

@@ -14,12 +14,16 @@ public class Shooting : MonoBehaviour
     [SerializeField] private float timerUI = 3;
     private YieldInstruction wfs;
 
+    private RenderTextureCapture rtc;
+
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
 
         wfs = new WaitForSeconds(timerUI);
+
+        rtc = GetComponent<RenderTextureCapture>();
     }
 
     // Update is called once per frame
@@ -28,6 +32,7 @@ public class Shooting : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Shoot();
+            rtc.ExportPhoto();
         }
     }
 

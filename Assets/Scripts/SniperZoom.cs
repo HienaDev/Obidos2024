@@ -5,6 +5,7 @@ using UnityEngine;
 public class SniperZoom : MonoBehaviour
 {
     private Camera cam;
+    [SerializeField] private Camera camTexture;
     [SerializeField] private float zoomScale;
     private float defaultZoom;
     private float currentZoom;
@@ -55,6 +56,7 @@ public class SniperZoom : MonoBehaviour
         {
             lerpValue += howFastZoom * Time.deltaTime;
             currentZoom = Mathf.Lerp(defaultZoom, zoomScale, lerpValue);
+            camTexture.fieldOfView = currentZoom;
             cam.fieldOfView = currentZoom;
         }
 
@@ -67,6 +69,7 @@ public class SniperZoom : MonoBehaviour
         {
             lerpValue += howFastZoom * Time.deltaTime;
             currentZoom = Mathf.Lerp(zoomScale, defaultZoom, lerpValue);
+            camTexture.fieldOfView = currentZoom;
             cam.fieldOfView = currentZoom;
         }
     }

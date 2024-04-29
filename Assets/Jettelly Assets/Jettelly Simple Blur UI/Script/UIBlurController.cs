@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class UIBlurController : MonoBehaviour
 {
-    [HideInInspector] [Range(0.001f, 0.015f)]public float BlurAmount = 0.005f;
+    [HideInInspector] [Range(0f, 0.015f)]public float BlurAmount = 0.005f;
     private Image _uiImage;
 
     void Start()
