@@ -19,12 +19,14 @@ public class Shootable : MonoBehaviour
 
         wfs = new WaitForSeconds(timeToExplode);
 
-        meshRenderer = GetComponentInChildren<MeshRenderer>();
+        skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+
+        
 
         Debug.Log(meshRenderer);
 
-        if (meshRenderer == null)
-            skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        if (skinnedMeshRenderer == null)
+            meshRenderer = GetComponentInChildren<MeshRenderer>();
 
 
         Debug.Log(skinnedMeshRenderer);
@@ -43,13 +45,14 @@ public class Shootable : MonoBehaviour
 
     private IEnumerator Explode()
     {
+        if (skinnedMeshRenderer != null)
+        {
+            skinnedMeshRenderer.enabled = false;
+            
+        }
         if (meshRenderer != null)
         {
             meshRenderer.enabled = false;
-        }
-        else
-        {
-            skinnedMeshRenderer.enabled = false;
         }
 
         Instantiate(conffeti, transform);
