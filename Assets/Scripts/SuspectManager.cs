@@ -10,17 +10,21 @@ public class SuspectManager : MonoBehaviour
     [SerializeField] private List<Bird> allBirdsList;
     [SerializeField] private TextMeshProUGUI debugCriminal;
     [SerializeField] private TextMeshProUGUI debugSelect;
+    [SerializeField] private TextMeshProUGUI debugWin;
     [SerializeField] private Animator birdFileAnim;
+    [SerializeField] private GameObject birdFileScene;
+    [SerializeField] private Button guiltyButton;
     private Bird[] birdList = new Bird[5];
     private Image buttonImage;
-    private Bird selectedBird;
+    public Bird SelectedBird { get; private set; }
+    private Bird guiltyBird;
     private bool[] select = new bool[5] {false, false, false, false, false};
 
     // Start is called before the first frame update
     void Start()
     {
-
         ChooseBirds();
+
         int intBird = 0;
         foreach (GameObject mug in mugshotList)
         {
@@ -36,6 +40,14 @@ public class SuspectManager : MonoBehaviour
     void Update()
     {
         Debug.Log($"{select[0]}, {select[1]}, {select[2]}, {select[3]}, {select[4]}");
+        if (SelectedBird != null)
+        {
+            guiltyButton.enabled = true;
+        }
+        else
+        {
+            guiltyButton.enabled = false;
+        }
     }
     public void ChooseBirds()
     {
@@ -44,7 +56,7 @@ public class SuspectManager : MonoBehaviour
             ChooseRandomBird(i);
         }
         
-        Bird guiltyBird = birdList[Random.Range(0,4)];
+        guiltyBird = birdList[Random.Range(0,4)];
         debugCriminal.text = $"The culprate is {guiltyBird.name}";
     }
     private void ChooseRandomBird(int listInd)
@@ -95,14 +107,14 @@ public class SuspectManager : MonoBehaviour
             if (CheckIfOtherTrue()) 
                 birdFileAnim.SetTrigger("Hide");
             birdFileAnim.SetTrigger("Show");
-            selectedBird = birdList[0];
-            debugSelect.text = $"Selected: {selectedBird.name}";
+            SelectedBird = birdList[0];
+            debugSelect.text = $"Selected: {SelectedBird.name}";
             ResetSelectExceptOne(0);
         }
         else
         {
             birdFileAnim.SetTrigger("Hide");
-            selectedBird = null;
+            SelectedBird = null;
             debugSelect.text = $"Selected: ";
             select[0] = false;
         }
@@ -115,14 +127,14 @@ public class SuspectManager : MonoBehaviour
             if (CheckIfOtherTrue()) 
                 birdFileAnim.SetTrigger("Hide");
             birdFileAnim.SetTrigger("Show");
-            selectedBird = birdList[1];
-            debugSelect.text = $"Selected: {selectedBird.name}";
+            SelectedBird = birdList[1];
+            debugSelect.text = $"Selected: {SelectedBird.name}";
             ResetSelectExceptOne(1);
         }
         else
         {
             birdFileAnim.SetTrigger("Hide");
-            selectedBird = null;
+            SelectedBird = null;
             debugSelect.text = $"Selected: ";
             select[1] = false;
         }
@@ -135,14 +147,14 @@ public class SuspectManager : MonoBehaviour
             if (CheckIfOtherTrue()) 
                 birdFileAnim.SetTrigger("Hide");
             birdFileAnim.SetTrigger("Show");
-            selectedBird = birdList[2];
-            debugSelect.text = $"Selected: {selectedBird.name}";
+            SelectedBird = birdList[2];
+            debugSelect.text = $"Selected: {SelectedBird.name}";
             ResetSelectExceptOne(2);
         }
         else
         {
             birdFileAnim.SetTrigger("Hide");
-            selectedBird = null;
+            SelectedBird = null;
             debugSelect.text = $"Selected: ";
             select[2] = false;
         }
@@ -155,14 +167,14 @@ public class SuspectManager : MonoBehaviour
             if (CheckIfOtherTrue()) 
                 birdFileAnim.SetTrigger("Hide");
             birdFileAnim.SetTrigger("Show");
-            selectedBird = birdList[3];
-            debugSelect.text = $"Selected: {selectedBird.name}";
+            SelectedBird = birdList[3];
+            debugSelect.text = $"Selected: {SelectedBird.name}";
             ResetSelectExceptOne(3);
         }
         else
         {
             birdFileAnim.SetTrigger("Hide");
-            selectedBird = null;
+            SelectedBird = null;
             debugSelect.text = $"Selected: ";
             select[3] = false;
         }
@@ -175,17 +187,32 @@ public class SuspectManager : MonoBehaviour
             if (CheckIfOtherTrue()) 
                 birdFileAnim.SetTrigger("Hide");
             birdFileAnim.SetTrigger("Show");
-            selectedBird = birdList[4];
-            debugSelect.text = $"Selected: {selectedBird.name}";
+            SelectedBird = birdList[4];
+            debugSelect.text = $"Selected: {SelectedBird.name}";
             ResetSelectExceptOne(4);
         }
         else
         {
             birdFileAnim.SetTrigger("Hide");
-            selectedBird = null;
+            SelectedBird = null;
             debugSelect.text = $"Selected: ";
             select[4] = false;
         }
         
+    }
+    public void OpenBirdFile()
+    {
+        birdFileScene.SetActive(true);
+    }
+    public void AccuseBird()
+    {
+        if (SelectedBird == guiltyBird)
+        {
+            debugWin.text = "YOU WON!!";
+        }
+        else 
+        {
+            debugWin.text = "YOU LOST!!";
+        }
     }
 }
