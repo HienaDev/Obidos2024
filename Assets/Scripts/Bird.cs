@@ -7,7 +7,7 @@ public class Bird : ScriptableObject
     // sprite
     public Sprite sprite;
     // description
-    public string especie;
+    public string species;
     public string description;
     public string[] habits;
     public float altura;
