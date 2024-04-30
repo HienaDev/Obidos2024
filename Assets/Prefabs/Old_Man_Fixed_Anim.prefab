@@ -540,10 +540,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conffeti: {fileID: 8129691248796698504, guid: 4cba5950ec5f80c4b9d98f253b272ab0,
     type: 3}
-  durationOfBadGuy: 20
+  durationOfBadGuy: 10
   badLayer:
     serializedVersion: 2
     m_Bits: 1024
+  badPathing: 0
 --- !u!136 &4660142219035020835
 CapsuleCollider:
   m_ObjectHideFlags: 0
