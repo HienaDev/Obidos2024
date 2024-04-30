@@ -13,13 +13,20 @@ MonoBehaviour:
   m_Name: "Gar\xE7a Real"
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 3cb4177b99a3e8344a851dba3dd28399, type: 3}
-  species: Bird
-  description: It's a Bird
+  species: Ardea cinerea
+  description: 'Stern but welcoming demeanor, gray feathers and orange/black beak.
+    Highly sociable indevidual. Subject lives in a high density apartment suburb,
+    with his family. In a monogamous relationship. '
   habits:
-  - Flying
-  - Eating
-  height: 1.2
+  - Partial Migrant
+  - Carnivore/Pescivore
+  - Smoking
+  height: 100
   crimes:
-  - A
-  - B
-  crimesDescription: []
+  - Property Damage while DUI
+  - Arson
+  crimesDescription:
+  - Subject crashed into neighboors apartments while flying, after going for a drink
+    with coworkers.
+  - Subject inadvertently caused fire damadge to private property after attempting
+    to settle over flamable material.

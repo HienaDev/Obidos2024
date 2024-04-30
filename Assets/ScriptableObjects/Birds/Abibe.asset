@@ -13,13 +13,20 @@ MonoBehaviour:
   m_Name: Abibe
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: b14c8e68ea5c2d540b670b1d6bc59c17, type: 3}
-  species: Bird
-  description: It's a Bird
+  species: Vanellus vanellus
+  description: 'Noisy and conspicuous indevidual. Green and purple feathers in a
+    ponytail. Lives in a rural setting inside a gated community where she is the
+    HOA president. Often goes out of her way to make flashy displays.  '
   habits:
-  - Flying
-  - Eating
-  height: 1.2
+  - 'Insectivore  '
+  height: 41
   crimes:
-  - A
-  - B
-  crimesDescription: []
+  - Vandalism
+  - Property Damage while Reckless Flying
+  - Second Degree Murder
+  crimesDescription:
+  - Subject broke and destroyed several equipment and selling goods at a Starbirds
+    after the cashier got their order wrong.
+  - Subject crashed into public property when alledegly trying to impress a mate
+    while flying.
+  - Subject taunted and shot a passerby reasoning that they were a tresspasser.

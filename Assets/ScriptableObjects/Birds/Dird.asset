@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8300819f3176764ba813c6b7e42a5ca, type: 3}
-  m_Name: Diogo de Andrade
+  m_Name: Dird
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: c36b09a90a613bd468528d11a773f019, type: 3}
-  species: Bird
-  description: It's a Bird
+  species: Diogius Andradium
+  description: A suspiciously shiny bird.
   habits:
   - Flying
   - Eating
   height: 1.2
   crimes:
-  - A
-  - B
-  crimesDescription: []
+  - Impersonating god
+  crimesDescription:
+  - Subject formed an unregulated cult as the leader, making much untaxed profit.
