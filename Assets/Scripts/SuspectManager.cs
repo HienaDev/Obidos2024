@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,11 +14,14 @@ public class SuspectManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI debugWin;
     [SerializeField] private Animator birdFileAnim;
     [SerializeField] private GameObject birdFileScene;
+    [SerializeField] private GameObject crimeFileScene;
     [SerializeField] private Button guiltyButton;
     private Bird[] birdList = new Bird[5];
     private Image buttonImage;
     public Bird SelectedBird { get; private set; }
     private Bird guiltyBird;
+    public string SelectedCrime { get; private set; }
+    private string crimeDescription;
     private bool[] select = new bool[5] {false, false, false, false, false};
 
     // Start is called before the first frame update
@@ -58,10 +62,17 @@ public class SuspectManager : MonoBehaviour
         
         guiltyBird = birdList[Random.Range(0,4)];
         debugCriminal.text = $"The culprate is {guiltyBird.name}";
+        ChooseCrime();
+    }
+    private void ChooseCrime()
+    {
+        int randInt = Random.Range(0,1);
+        SelectedCrime = guiltyBird.crimes[randInt];
+        crimeDescription = guiltyBird.crimes[randInt];
     }
     private void ChooseRandomBird(int listInd)
     {
-        int randInt = Random.Range(0,6);
+        int randInt = Random.Range(0,allBirdsList.Count-1);
 
         if (allBirdsList[randInt] != null)
         {
@@ -203,6 +214,10 @@ public class SuspectManager : MonoBehaviour
     public void OpenBirdFile()
     {
         birdFileScene.SetActive(true);
+    }
+    public void OpenCrimeFile()
+    {
+        crimeFileScene.SetActive(true);
     }
     public void AccuseBird()
     {

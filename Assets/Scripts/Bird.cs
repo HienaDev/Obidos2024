@@ -12,8 +12,8 @@ public class Bird :ScriptableObject
     public List<string> habits;
     public float height;
 
-    // // crime
-    // public string crime;
-    // // crime description
-    // public string crimeDescription;
+    // crime
+    public string[] crimes;
+    // crime description
+    public string[] crimesDescription;
 }

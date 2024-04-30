@@ -19,3 +19,9 @@ MonoBehaviour:
   - Flying
   - Eating
   height: 1.2
+  crimes:
+  - A
+  - B
+  crimesDescription:
+  - 
+  - 
