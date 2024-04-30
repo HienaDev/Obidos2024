@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8300819f3176764ba813c6b7e42a5ca, type: 3}
+  m_Name: Bird_G
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: c6aaf13551504c44db05a0611534373d, type: 3}
+  species: Bird
+  description: It's a Bird
+  habits:
+  - Flying
+  - Eating
+  height: 1.2
+  crimes:
+  - A
+  - B
+  crimesDescription: []
