@@ -17,32 +17,40 @@ public class Shootable : MonoBehaviour
     [SerializeField] private float durationOfBadGuy = 10;
     private YieldInstruction wfsBadGuy;
 
-    private ScoreManager scoreManager;
 
     [SerializeField] private LayerMask badLayer;
-    private bool badPathing;
+    public bool badPathing;
+
+    public bool BadDog {  get; set; }
 
     public bool BadGuy {  get; private set; }
 
     private RandomPositionNPC rpnpc;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    private ScareBirds tempScare;
 
+
+
+    private void Start()
+    {
         wfs = new WaitForSeconds(timeToExplode);
-        wfsBadGuy = new WaitForSeconds (durationOfBadGuy);
+        wfsBadGuy = new WaitForSeconds(durationOfBadGuy);
 
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
 
-        scoreManager = ScoreManager.instance;
 
+        BadDog = false;
+
+        tempScare = null;
+        tempScare = GetComponent<ScareBirds>();
+
+        badPathing = false;
 
         if (skinnedMeshRenderer == null)
             meshRenderer = GetComponentInChildren<MeshRenderer>();
 
         rpnpc = GetComponent<RandomPositionNPC>();
-        Debug.Log(rpnpc);
+        //Debug.Log(rpnpc);
     }
 
     private void FixedUpdate()
@@ -50,7 +58,7 @@ public class Shootable : MonoBehaviour
         if (rpnpc != null)
         {
             badPathing = Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up) * -1, Mathf.Infinity, badLayer);
-            Debug.Log(badPathing);
+            //Debug.Log(badPathing);
         }
             
 
@@ -59,36 +67,27 @@ public class Shootable : MonoBehaviour
 
     public void StartExplosion()
     {
-        StartCoroutine(Explode());
-    }
+        Instantiate(conffeti, transform.position, Quaternion.identity);
 
-    private IEnumerator Explode()
-    {
-        if (skinnedMeshRenderer != null)
+        if (BadGuy || badPathing || BadDog)
         {
-            skinnedMeshRenderer.enabled = false;
-            
-        }
-        if (meshRenderer != null)
-        {
-            meshRenderer.enabled = false;
-        }
-
-        Instantiate(conffeti, transform);
-        GetComponent<Collider>().enabled = false;
-
-        if (BadGuy)
-        {
-            scoreManager.AddScore(10);
+            Debug.Log(BadGuy);
+            Debug.Log(badPathing);
+            Debug.Log(BadDog);
+            ScoreManager.instance.AddScore(10);
             StopCoroutine(BadGuyForXSeconds());
         }
-        else scoreManager.AddScore(-10);
+        else
+        {
+            ScoreManager.instance.AddScore(-10);
+        }
 
-        yield return wfs;
-
-        Destroy(gameObject);
+        Invoke(nameof(DestroyMe), 0.1f);
     }
 
+    private void DestroyMe() => Destroy(gameObject);
+
+    
     public void TurnBadGuy()
     {
         StartCoroutine(BadGuyForXSeconds());
@@ -99,7 +98,7 @@ public class Shootable : MonoBehaviour
 
         BadGuy = true;
         yield return wfsBadGuy;
-        scoreManager.AddScore(-1);
+        ScoreManager.instance.AddScore(-1);
         BadGuy = false;
     }
 

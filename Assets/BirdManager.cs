@@ -8,6 +8,7 @@ public class BirdManager : MonoBehaviour
     [SerializeField] private Transform[] waypoints;
     private bool[] occupied;
 
+    [SerializeField] public Transform scarePoint;
     public static BirdManager instance; 
 
 
