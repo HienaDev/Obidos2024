@@ -24,8 +24,6 @@ public class SniperZoom : MonoBehaviour
 
         lerpValue = 1;
 
-        Debug.Log(zoomScale);
-        Debug.Log(defaultZoom);
     }
 
     // Update is called once per frame
