@@ -89,7 +89,7 @@ public class Shooting : MonoBehaviour
 
             if (temp != null)
             {
-                if (temp.BadGuy == true)
+                if (temp.BadGuy || temp.badPathing || temp.BadDog)
                     StartCoroutine(ActivateForXSeconds(goodUI));
                 else
                     StartCoroutine(ActivateForXSeconds(badUI));
