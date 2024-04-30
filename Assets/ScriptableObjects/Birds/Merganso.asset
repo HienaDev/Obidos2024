@@ -13,13 +13,17 @@ MonoBehaviour:
   m_Name: Merganso
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: c6aaf13551504c44db05a0611534373d, type: 3}
-  species: Bird
-  description: It's a Bird
+  species: Mergus merganser
+  description: 'Resident in the slums and member of a local gang. Green and white
+    feathers with a red beak, mullet hairstyle and appears to have had a serated
+    beak procedure. Father to several dozens of  children, mostly from different
+    mothers. '
   habits:
-  - Flying
-  - Eating
-  height: 1.2
+  - Diving
+  - Partying
+  height: 69
   crimes:
-  - A
-  - B
-  crimesDescription: []
+  - Aggrevated assault and robbery
+  crimesDescription:
+  - Subject assaulted other customers while shopping at Treeget over a can of sardines,
+    yelling and fleeing teh scene with it.
