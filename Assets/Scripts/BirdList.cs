@@ -35,11 +35,11 @@ public class BirdList : MonoBehaviour
 
         positions = new float[5] {50f, 25f, 0f, -25f, -50f};
 
-        for (int i = 0; i < newBirds.Length; i++)
+        for (int i = 0; i < newBirds.Length; i++)   
         {
             while (true)
             {
-                Brid newBird = Bird[Random.Range(0, newBirds.Length)];
+                Bird newBird = birds[Random.Range(0, newBirds.Length)];
                 
 
                 foreach (Bird bird in newBirds)
