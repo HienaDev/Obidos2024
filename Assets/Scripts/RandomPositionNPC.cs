@@ -35,6 +35,8 @@ public class RandomPositionNPC : MonoBehaviour
         { 
             RandomPosition();   
         }
+
+
     }
 
     public void RandomPosition()
@@ -96,4 +98,6 @@ public class RandomPositionNPC : MonoBehaviour
         }
         return -1;
     }
+
+    public bool IsBadHumanoid() => agent.agentTypeID == GetAgenTypeIDByName("Humanoid Bad");
 }

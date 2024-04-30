@@ -6844,6 +6844,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Teratorn (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3212832220247294279, guid: 30593f1eded9ec942b91c1d9e7dd6937,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9209599334056479792, guid: 30593f1eded9ec942b91c1d9e7dd6937,
         type: 3}
       propertyPath: m_LocalPosition.x

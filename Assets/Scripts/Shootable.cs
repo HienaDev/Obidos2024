@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class Shootable : MonoBehaviour
@@ -18,10 +19,12 @@ public class Shootable : MonoBehaviour
 
     private ScoreManager scoreManager;
 
-    
-
+    [SerializeField] private LayerMask badLayer;
+    private bool badPathing;
 
     public bool BadGuy {  get; private set; }
+
+    private RandomPositionNPC rpnpc;
 
     // Start is called before the first frame update
     void Start()
@@ -34,18 +37,24 @@ public class Shootable : MonoBehaviour
 
         scoreManager = ScoreManager.instance;
 
-        //Debug.Log(meshRenderer);
 
         if (skinnedMeshRenderer == null)
             meshRenderer = GetComponentInChildren<MeshRenderer>();
 
-
-        //Debug.Log(skinnedMeshRenderer);
+        rpnpc = GetComponent<RandomPositionNPC>();
+        Debug.Log(rpnpc);
     }
 
     private void FixedUpdate()
     {
-        //Debug.Log(gameObject.name +  BadGuy);  
+        if (rpnpc != null)
+        {
+            badPathing = Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up) * -1, Mathf.Infinity, badLayer);
+            Debug.Log(badPathing);
+        }
+            
+
+        
     }
 
     public void StartExplosion()

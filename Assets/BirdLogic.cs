@@ -27,7 +27,7 @@ public class BirdLogic : MonoBehaviour
         flying = false;
 
         timerStanding = Random.Range(timerStoodStill.x, timerStoodStill.y); 
-        Debug.Log(timerStanding);
+        //Debug.Log(timerStanding);
 
         lerpValue = 0;
 
@@ -46,7 +46,7 @@ public class BirdLogic : MonoBehaviour
             
             flying = true;
             animator.SetTrigger("Flying");
-            Debug.Log("flying");
+            //Debug.Log("flying");
             lerpValue = 0;
 
             transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.position, targetPosition.position - transform.position,360, 360));
@@ -58,7 +58,7 @@ public class BirdLogic : MonoBehaviour
             if(Vector3.Distance(transform.position, targetPosition.position) < rangeToStopFlyingAnimation)
             {
                 animator.SetTrigger("Stop Flying");
-                Debug.Log("Not flying");
+                //Debug.Log("Not flying");
             }
 
             if (lerpValue < 1)
@@ -71,7 +71,7 @@ public class BirdLogic : MonoBehaviour
             {
                 flying = false;
                 timerStanding = Random.Range(timerStoodStill.x, timerStoodStill.y);
-                Debug.Log(timerStanding);
+                //Debug.Log(timerStanding);
                 justLanded = Time.time;
                 animator.ResetTrigger("Stop Flying");
                 initialPosition = transform.position;

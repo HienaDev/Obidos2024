@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 40
   distanceToRetry: 1
-  chanceForBad: 75
+  chanceForBad: 50
 --- !u!195 &639129495711456758
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -217,3 +217,6 @@ MonoBehaviour:
   conffeti: {fileID: 8129691248796698504, guid: 4cba5950ec5f80c4b9d98f253b272ab0,
     type: 3}
   durationOfBadGuy: 20
+  badLayer:
+    serializedVersion: 2
+    m_Bits: 1024

@@ -36,7 +36,7 @@ public class BirdManager : MonoBehaviour
         }
 
         occupied[slot] = true;
-        Debug.Log(slot + occupied[slot].ToString());
+        //Debug.Log(slot + occupied[slot].ToString());
 
         return waypoints[slot];
     }
