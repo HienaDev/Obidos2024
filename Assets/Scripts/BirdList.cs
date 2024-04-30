@@ -39,7 +39,7 @@ public class BirdList : MonoBehaviour
         {
             while (true)
             {
-                Brid newBird = Bird[Random.Range(0, newBirds.Length)];
+                Bird newBird = birds[Random.Range(0, newBirds.Length)];
                 
 
                 foreach (Bird bird in newBirds)
