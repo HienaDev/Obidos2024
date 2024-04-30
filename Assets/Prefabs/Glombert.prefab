@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 40
   distanceToRetry: 1
+  chanceForBad: 75
 --- !u!195 &639129495711456758
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -525,6 +525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 50
   distanceToRetry: 3
+  chanceForBad: 75
 --- !u!114 &1448326226090904858
 MonoBehaviour:
   m_ObjectHideFlags: 0

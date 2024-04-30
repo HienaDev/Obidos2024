@@ -10,6 +10,8 @@ public class RandomPositionNPC : MonoBehaviour
     [SerializeField] private float distance = 40;
     [SerializeField] private float distanceToRetry = 3;
 
+    [SerializeField, Range(0, 100)] private int chanceForBad;
+
     private NavMeshAgent agent;
     private Vector3 nextPosition;
 
@@ -37,6 +39,18 @@ public class RandomPositionNPC : MonoBehaviour
 
     public void RandomPosition()
     {
+
+        
+
+        if(agent.agentTypeID == GetAgenTypeIDByName("Humanoid Bad"))
+        {
+            agent.agentTypeID = GetAgenTypeIDByName("Humanoid");
+        }
+        else if (Random.Range(0, 100) < chanceForBad)
+        {
+            agent.agentTypeID = GetAgenTypeIDByName("Humanoid Bad");
+        }
+
         agent.destination = RandomNavSphere();
         nextPosition = agent.destination;
     }
@@ -65,5 +79,21 @@ public class RandomPositionNPC : MonoBehaviour
 
         Gizmos.DrawWireSphere(transform.position, distanceToRetry);
         
+    }
+
+    private int GetAgenTypeIDByName(string agentTypeName)
+    {
+        int count = NavMesh.GetSettingsCount();
+        string[] agentTypeNames = new string[count + 2];
+        for (var i = 0; i < count; i++)
+        {
+            int id = NavMesh.GetSettingsByIndex(i).agentTypeID;
+            string name = NavMesh.GetSettingsNameFromID(id);
+            if (name == agentTypeName)
+            {
+                return id;
+            }
+        }
+        return -1;
     }
 }
