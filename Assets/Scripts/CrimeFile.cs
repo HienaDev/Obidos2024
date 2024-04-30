@@ -8,19 +8,25 @@ public class CrimeFile : MonoBehaviour
 {
     [SerializeField] private SuspectManager suspectManager;
     [SerializeField] private TextMeshProUGUI crimeName;
+    [SerializeField] private TextMeshProUGUI crimeDescription;
 
     // Start is called before the first frame update
     void Start()
     {
-        crimeName.text = suspectManager.SelectedCrime;
     }
 
     // Update is called once per frame
     void Update()
     {
+
     }
-    public void quitDocument()
+    public void QuitDocument()
     {
         gameObject.SetActive(false);
+    }
+    public void UpdateDocument()
+    {
+        crimeName.text = suspectManager.SelectedCrime;
+        crimeDescription.text = suspectManager.CrimeDescription;
     }
 }
