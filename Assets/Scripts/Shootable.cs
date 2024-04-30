@@ -24,12 +24,14 @@ public class Shootable : MonoBehaviour
     public bool BadDog {  get; set; }
 
     public bool BadGuy {  get; private set; }
+    public bool Caught { get; private set; }
 
     private RandomPositionNPC rpnpc;
 
     private ScareBirds tempScare;
 
-
+    private Collider col;
+    private bool beingSeen;
 
     private void Start()
     {
@@ -40,6 +42,7 @@ public class Shootable : MonoBehaviour
 
 
         BadDog = false;
+        Caught = false;
 
         tempScare = null;
         tempScare = GetComponent<ScareBirds>();
@@ -51,6 +54,7 @@ public class Shootable : MonoBehaviour
 
         rpnpc = GetComponent<RandomPositionNPC>();
         //Debug.Log(rpnpc);
+        col = GetComponent<Collider>();
     }
 
     private void FixedUpdate()
@@ -60,9 +64,20 @@ public class Shootable : MonoBehaviour
             badPathing = Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up) * -1, Mathf.Infinity, badLayer);
             //Debug.Log(badPathing);
         }
-            
 
-        
+        beingSeen = CheckIfOnCamera();
+
+        if (beingSeen)
+        {
+            Shooting.seenObjects.Add(gameObject);
+        }
+        else
+        {
+            if(Shooting.seenObjects.Contains(gameObject))
+            {
+                Shooting.seenObjects.Remove(gameObject);
+            }
+        }
     }
 
     public void StartExplosion()
@@ -74,7 +89,12 @@ public class Shootable : MonoBehaviour
             Debug.Log(BadGuy);
             Debug.Log(badPathing);
             Debug.Log(BadDog);
-            ScoreManager.instance.AddScore(10);
+            if(BadGuy && Caught)
+            {
+                ScoreManager.instance.AddScore(30);
+            }
+            else
+                ScoreManager.instance.AddScore(10);
             StopCoroutine(BadGuyForXSeconds());
         }
         else
@@ -93,12 +113,33 @@ public class Shootable : MonoBehaviour
         StartCoroutine(BadGuyForXSeconds());
     }
 
+    public void CaughtDoingBadThings()
+    {
+        if(BadGuy)
+        {
+            Caught = true;
+        }
+    }
+
+    private bool CheckIfOnCamera()
+    {
+        return GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(Camera.main), col.bounds);
+
+    }
+
     private IEnumerator BadGuyForXSeconds()
     {
 
         BadGuy = true;
+
         yield return wfsBadGuy;
-        ScoreManager.instance.AddScore(-5);
+
+        if(Caught)
+            ScoreManager.instance.AddScore(-3);
+        else
+            ScoreManager.instance.AddScore(-5);
+
+        Caught = false;
         BadGuy = false;
     }
 

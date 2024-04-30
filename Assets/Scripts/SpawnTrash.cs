@@ -28,7 +28,6 @@ public class SpawnTrash : MonoBehaviour
         if (Time.time - justThrewTrash > timerThrowTrash) 
         { 
             ThrowTrash();
-            
         }
     }
 

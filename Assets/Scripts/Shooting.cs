@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class Shooting : MonoBehaviour
@@ -22,9 +23,24 @@ public class Shooting : MonoBehaviour
     [SerializeField] private int sniperNumber = 2;
     [SerializeField] private GameObject sniperUI;
 
+    [SerializeField] private GameObject caughtUI;
+
+    [SerializeField] private GameObject newSpeciesUI;
+    [SerializeField] private GameObject iSawThatUI;
+
     private List<GameObject> uiTools;
 
     private SniperZoom zoomScript;
+
+    public static HashSet<GameObject> seenObjects;
+    public static List<string> seenSpecies;
+
+
+    private void Awake()
+    {
+        seenObjects = new HashSet<GameObject>();
+        seenSpecies = new List<string>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -62,7 +78,10 @@ public class Shooting : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             if(cameraUI.activeSelf)
-                rtc.ExportPhoto();
+            {
+                string type = CameraShooting();
+                rtc.ExportPhoto(type);
+            }
 
             if (sniperUI.activeSelf)
                 Shoot();
@@ -70,12 +89,53 @@ public class Shooting : MonoBehaviour
         }
     }
 
+
     private void ResetUI()
     {
         foreach (GameObject go in uiTools)
         {
             go.SetActive(false);
         }
+    }
+
+
+    private string CameraShooting()
+    {
+        foreach(GameObject go in seenObjects)
+        {
+            if(go != null)
+            {
+                
+
+                BirdLogic birdLogic = go.GetComponent<BirdLogic>();
+                if (birdLogic != null)
+                {
+                    if (!seenSpecies.Contains(birdLogic.Species))
+                    {
+                        seenSpecies.Add(birdLogic.Species);
+                        StartCoroutine(ActivateForXSeconds(newSpeciesUI));
+                        return "new_species";
+                    }
+                    
+                }
+
+                Shootable shootable = go.GetComponent<Shootable>();
+
+                if (shootable != null)
+                {
+                    shootable.CaughtDoingBadThings();
+                    if(shootable.Caught)
+                    {
+                        StartCoroutine(ActivateForXSeconds(iSawThatUI));
+
+                        return "caught";
+                    }
+                }
+            }
+            
+        }
+
+        return "";
     }
 
     private void Shoot()
@@ -90,7 +150,12 @@ public class Shooting : MonoBehaviour
             if (temp != null)
             {
                 if (temp.BadGuy || temp.badPathing || temp.BadDog)
-                    StartCoroutine(ActivateForXSeconds(goodUI));
+                { 
+                    if(temp.BadGuy && temp.Caught)
+                        StartCoroutine(ActivateForXSeconds(caughtUI));
+
+                    Invoke(nameof(ActivateGoodUI), 0.02f);
+                }
                 else
                     StartCoroutine(ActivateForXSeconds(badUI));
 
@@ -98,6 +163,8 @@ public class Shooting : MonoBehaviour
             }
         }
     }
+
+    private void ActivateGoodUI() => StartCoroutine(ActivateForXSeconds(goodUI));
 
     private IEnumerator ActivateForXSeconds(GameObject ui)
     {

@@ -21,6 +21,9 @@ public class BirdLogic : MonoBehaviour
     private Vector3 initialPosition;
     private Transform targetPosition;
 
+    [SerializeField] private string species;
+    public string Species {  get { return species; } }
+
     private bool scared;
 
     // Start is called before the first frame update
@@ -39,6 +42,12 @@ public class BirdLogic : MonoBehaviour
         scared = false;
 
         targetPosition = BirdManager.instance.GetWaypoint();
+
+        if (species == "green") GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.green;
+        if (species == "red") GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.red;
+        if (species == "blue") GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.blue;
+        if (species == "yellow") GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.yellow;
+        if (species == "cyan") GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.cyan;
     }
 
     // Update is called once per frame
