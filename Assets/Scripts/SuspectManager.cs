@@ -76,10 +76,24 @@ public class SuspectManager : MonoBehaviour
             }
         }
     }
+    private bool CheckIfOtherTrue()
+    {
+        bool result = false;
+        foreach (bool sel in select)
+        {
+            if (sel)
+            {
+                result = true;
+            }
+        }
+        return result;
+    }
     public void SelectBird1()
     {
         if (!select[0])
         {
+            if (CheckIfOtherTrue()) 
+                birdFileAnim.SetTrigger("Hide");
             birdFileAnim.SetTrigger("Show");
             selectedBird = birdList[0];
             debugSelect.text = $"Selected: {selectedBird.name}";
@@ -98,6 +112,8 @@ public class SuspectManager : MonoBehaviour
     {
         if (!select[1])
         {
+            if (CheckIfOtherTrue()) 
+                birdFileAnim.SetTrigger("Hide");
             birdFileAnim.SetTrigger("Show");
             selectedBird = birdList[1];
             debugSelect.text = $"Selected: {selectedBird.name}";
@@ -116,6 +132,8 @@ public class SuspectManager : MonoBehaviour
     {
         if (!select[2])
         {
+            if (CheckIfOtherTrue()) 
+                birdFileAnim.SetTrigger("Hide");
             birdFileAnim.SetTrigger("Show");
             selectedBird = birdList[2];
             debugSelect.text = $"Selected: {selectedBird.name}";
@@ -134,6 +152,8 @@ public class SuspectManager : MonoBehaviour
     {
         if (!select[3])
         {
+            if (CheckIfOtherTrue()) 
+                birdFileAnim.SetTrigger("Hide");
             birdFileAnim.SetTrigger("Show");
             selectedBird = birdList[3];
             debugSelect.text = $"Selected: {selectedBird.name}";
@@ -152,6 +172,8 @@ public class SuspectManager : MonoBehaviour
     {
         if (!select[4])
         {
+            if (CheckIfOtherTrue()) 
+                birdFileAnim.SetTrigger("Hide");
             birdFileAnim.SetTrigger("Show");
             selectedBird = birdList[4];
             debugSelect.text = $"Selected: {selectedBird.name}";
