@@ -49,6 +49,13 @@ public class SniperZoom : MonoBehaviour
         //Debug.Log(lerpValue);
     }
 
+    public void SetCurrentCrosshair(GameObject crosshair)
+    {
+        crosshair.SetActive(false);
+
+        this.crosshair = crosshair;
+    }
+
     private void ZoomIn()
     {
 
