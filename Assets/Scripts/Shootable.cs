@@ -98,7 +98,7 @@ public class Shootable : MonoBehaviour
 
         BadGuy = true;
         yield return wfsBadGuy;
-        ScoreManager.instance.AddScore(-1);
+        ScoreManager.instance.AddScore(-5);
         BadGuy = false;
     }
 

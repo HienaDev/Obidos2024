@@ -30,7 +30,7 @@ public class BirdLogic : MonoBehaviour
         flying = false;
         justLanded = Random.Range(0f, 10f);
         timerStanding = Random.Range(timerStoodStill.x, timerStoodStill.y);
-        //Debug.Log(gameObject.name + timerStanding);
+        ////Debug.Log(gameObject.name + timerStanding);
 
         lerpValue = 0;
 
@@ -51,7 +51,7 @@ public class BirdLogic : MonoBehaviour
 
             flying = true;
             animator.SetTrigger("Flying");
-            Debug.Log(gameObject.name + "flying");
+            //Debug.Log(gameObject.name + "flying");
             lerpValue = 0;
 
             transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.position, targetPosition.position - transform.position, 360, 360));
@@ -63,7 +63,7 @@ public class BirdLogic : MonoBehaviour
             if (Vector3.Distance(transform.position, targetPosition.position) < rangeToStopFlyingAnimation)
             {
                 animator.SetTrigger("Stop Flying");
-                Debug.Log(gameObject.name + "Not flying");
+                //Debug.Log(gameObject.name + "Not flying");
             }
 
             if (lerpValue < 1)
@@ -76,7 +76,7 @@ public class BirdLogic : MonoBehaviour
             {
                 flying = false;
                 timerStanding = Random.Range(timerStoodStill.x, timerStoodStill.y);
-                //Debug.Log(gameObject.name + timerStanding);
+                ////Debug.Log(gameObject.name + timerStanding);
                 justLanded = Time.time;
                 lerpValue = 0;
 
@@ -86,11 +86,11 @@ public class BirdLogic : MonoBehaviour
                     initialPosition = transform.position;
                     Transform tempTransform = targetPosition;
                     targetPosition = BirdManager.instance.GetWaypoint();
-                    Debug.Log(gameObject.name + " was at " + tempTransform.gameObject.name + " wants to go to " + targetPosition.gameObject.name);
+                    //Debug.Log(gameObject.name + " was at " + tempTransform.gameObject.name + " wants to go to " + targetPosition.gameObject.name);
                     BirdManager.instance.LeaveWaypoints(tempTransform);
                     
                     animator.ResetTrigger("Stop Flying");
-                    Debug.Log(gameObject.name + "remove trigger stop flying");
+                    //Debug.Log(gameObject.name + "remove trigger stop flying");
                 }
             }
         }
@@ -110,7 +110,7 @@ public class BirdLogic : MonoBehaviour
         scared = true;
         flying = true;
         animator.SetTrigger("Flying");
-        Debug.Log(gameObject.name + "flying scared");
+        //Debug.Log(gameObject.name + "flying scared");
         lerpValue = 0;
         initialPosition = transform.position;
         targetPosition = BirdManager.instance.scarePoint;
