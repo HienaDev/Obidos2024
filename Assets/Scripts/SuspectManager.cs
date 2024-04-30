@@ -21,7 +21,7 @@ public class SuspectManager : MonoBehaviour
     public Bird SelectedBird { get; private set; }
     private Bird guiltyBird;
     public string SelectedCrime { get; private set; }
-    private string crimeDescription;
+    public string CrimeDescription { get; private set; }
     private bool[] select = new bool[5] {false, false, false, false, false};
 
     // Start is called before the first frame update
@@ -68,7 +68,7 @@ public class SuspectManager : MonoBehaviour
     {
         int randInt = Random.Range(0,1);
         SelectedCrime = guiltyBird.crimes[randInt];
-        crimeDescription = guiltyBird.crimes[randInt];
+        CrimeDescription = guiltyBird.crimes[randInt];
     }
     private void ChooseRandomBird(int listInd)
     {

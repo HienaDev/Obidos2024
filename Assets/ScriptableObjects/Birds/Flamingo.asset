@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8300819f3176764ba813c6b7e42a5ca, type: 3}
-  m_Name: Bird_F
+  m_Name: Flamingo
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 7a37d334e80544c4aaff615413e76fa2, type: 3}
+  sprite: {fileID: 21300000, guid: f897c9a20aa4db34396f729ace535848, type: 3}
   species: Bird
   description: It's a Bird
   habits:
@@ -22,4 +22,6 @@ MonoBehaviour:
   crimes:
   - A
   - B
-  crimesDescription: []
+  crimesDescription:
+  - 
+  - 
