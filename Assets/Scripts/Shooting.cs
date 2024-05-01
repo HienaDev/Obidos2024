@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shooting : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class Shooting : MonoBehaviour
 
     [SerializeField] private GameObject newSpeciesUI;
     [SerializeField] private GameObject iSawThatUI;
+    public GameObject caughtPictureUI;
 
     private List<GameObject> uiTools;
 
@@ -37,8 +39,15 @@ public class Shooting : MonoBehaviour
     public static List<string> seenSpecies;
 
     private PlaySoundsPlayer sounds;
+
+    private Sprite lastPicture;
+
+    public static Shooting instance;
+    
     private void Awake()
     {
+        instance = this;
+
         seenObjects = new HashSet<GameObject>();
         seenSpecies = new List<string>();
     }
@@ -84,13 +93,26 @@ public class Shooting : MonoBehaviour
             {
                 string type = CameraShooting();
                 sounds.PlaySoundCam();
-                rtc.ExportPhoto(type);
+                lastPicture = rtc.ExportPhoto(type);
             }
 
             if (sniperUI.activeSelf)
             { 
                 Shoot();
                 sounds.PlaySoundShoot();
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.E)) 
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit))
+            {
+                StartDay sd = hit.collider.gameObject.GetComponent<StartDay>();
+                if (sd != null) 
+                {
+                    sd.ActivateStuff();
+                }
             }
         }
     }
@@ -104,9 +126,14 @@ public class Shooting : MonoBehaviour
         }
     }
 
+    public void TriggerCaughtUI()
+    {
+        StartCoroutine(ActivateForXSeconds(caughtPictureUI));
+    }
 
     private string CameraShooting()
     {
+
         foreach(GameObject go in seenObjects)
         {
             if(go != null)
@@ -114,27 +141,29 @@ public class Shooting : MonoBehaviour
                 
 
                 BirdLogic birdLogic = go.GetComponent<BirdLogic>();
+                Shootable shootable = go.GetComponent<Shootable>();
                 if (birdLogic != null)
                 {
                     if (!seenSpecies.Contains(birdLogic.Species))
                     {
+                        ScoreManager.instance.AddScore(10);
                         seenSpecies.Add(birdLogic.Species);
                         StartCoroutine(ActivateForXSeconds(newSpeciesUI));
-                        return "new_species";
+                        rtc.ExportPhoto("new_species_");
                     }
                     
                 }
-
-                Shootable shootable = go.GetComponent<Shootable>();
-
-                if (shootable != null)
+                else if (shootable != null)
                 {
                     shootable.CaughtDoingBadThings();
                     if(shootable.Caught)
                     {
                         StartCoroutine(ActivateForXSeconds(iSawThatUI));
+                        ScoreManager.instance.AddScore(5);
+                        shootable.caughtPicture = rtc.ExportPhoto("caught_");
 
-                        return "caught";
+
+                        
                     }
                 }
             }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shootable : MonoBehaviour
 {
@@ -33,6 +34,8 @@ public class Shootable : MonoBehaviour
     private Collider col;
     private bool beingSeen;
 
+    public Sprite caughtPicture;
+
     private void Start()
     {
         wfs = new WaitForSeconds(timeToExplode);
@@ -57,7 +60,7 @@ public class Shootable : MonoBehaviour
         col = GetComponent<Collider>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (rpnpc != null)
         {
@@ -91,7 +94,9 @@ public class Shootable : MonoBehaviour
             Debug.Log(BadDog);
             if(BadGuy && Caught)
             {
-                ScoreManager.instance.AddScore(30);
+                Shooting.instance.caughtPictureUI.GetComponent<Image>().sprite = caughtPicture;
+                Shooting.instance.TriggerCaughtUI();
+                ScoreManager.instance.AddScore(20);
             }
             else
                 ScoreManager.instance.AddScore(10);

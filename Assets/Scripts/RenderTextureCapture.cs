@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
+using System.Linq;
 
 public class RenderTextureCapture : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class RenderTextureCapture : MonoBehaviour
     public List<Sprite> sprites = new List<Sprite>();
     [SerializeField] private GameObject image;
 
-    public void ExportPhoto(string type)
+    public Sprite ExportPhoto(string type)
     {
         byte[] bytes = toTexture2D(captureTexture).EncodeToPNG();
         var dirPath = Application.persistentDataPath + "/ExportPhoto";
@@ -20,8 +21,10 @@ public class RenderTextureCapture : MonoBehaviour
         {
             System.IO.Directory.CreateDirectory(dirPath);
         }
-        System.IO.File.WriteAllBytes(dirPath + $"/{type}_photo" + Random.Range(0, 1000000) + ".png", bytes);
+        System.IO.File.WriteAllBytes(dirPath + $"/{type}photo" + Random.Range(0, 1000000) + ".png", bytes);
         Debug.Log(bytes.Length / 1024 + "Kb was saved as: " + dirPath);
+
+        return sprites.Last();
     }
 
     private Texture2D toTexture2D(RenderTexture rTex)

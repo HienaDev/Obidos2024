@@ -63,6 +63,7 @@ public class ScareBirds : MonoBehaviour
             animator.SetBool("Walking", false);
             justSat = Time.time;
             shootScript.BadDog = true;
+            sounds.PlayLoudSound();
             Sitting = true;
             GetComponent<NavMeshAgent>().speed = 0;
         }

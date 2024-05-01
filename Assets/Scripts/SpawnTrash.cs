@@ -16,6 +16,7 @@ public class SpawnTrash : MonoBehaviour
     void Start()
     {
         justThrewTrash = Time.time;
+        sounds = GetComponent<PlaySounds>();
     }
 
     // Update is called once per frame
