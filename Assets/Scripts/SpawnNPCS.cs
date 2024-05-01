@@ -18,6 +18,9 @@ public class SpawnNPCS : MonoBehaviour
 
     public static SpawnNPCS instance;
 
+    [SerializeField] private int maxNPCs;
+    int npcNumber = 0;
+
 
     private void Awake()
     {
@@ -35,7 +38,7 @@ public class SpawnNPCS : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.time - justSpawned > cooldown)
+        if(Time.time - justSpawned > cooldown && npcNumber < maxNPCs)
         {
             NavMeshHit closestHit;
             NavMesh.SamplePosition(spawnPoints[Random.Range(0, spawnPoints.Length)].position, out closestHit, 500, -1);
@@ -45,6 +48,7 @@ public class SpawnNPCS : MonoBehaviour
             justSpawned = Time.time;
             cooldown = Random.Range(timer.x, timer.y);
             Debug.Log(cooldown);
+            npcNumber++;
         }
     }
 
