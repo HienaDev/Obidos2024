@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shooting : MonoBehaviour
 {
@@ -22,9 +25,33 @@ public class Shooting : MonoBehaviour
     [SerializeField] private int sniperNumber = 2;
     [SerializeField] private GameObject sniperUI;
 
+    [SerializeField] private GameObject caughtUI;
+
+    [SerializeField] private GameObject newSpeciesUI;
+    [SerializeField] private GameObject iSawThatUI;
+    public GameObject caughtPictureUI;
+
     private List<GameObject> uiTools;
 
     private SniperZoom zoomScript;
+
+    public static HashSet<GameObject> seenObjects;
+    public static List<string> seenSpecies;
+
+    private PlaySoundsPlayer sounds;
+
+    private Sprite lastPicture;
+
+    public static Shooting instance;
+
+    
+    private void Awake()
+    {
+        instance = this;
+
+        seenObjects = new HashSet<GameObject>();
+        seenSpecies = new List<string>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +65,8 @@ public class Shooting : MonoBehaviour
         uiTools = new List<GameObject>();
         uiTools.Add(cameraUI);
         uiTools.Add(sniperUI);
+
+        sounds = GetComponent<PlaySoundsPlayer>();
 
         zoomScript = GetComponent<SniperZoom>();
     }
@@ -62,13 +91,34 @@ public class Shooting : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             if(cameraUI.activeSelf)
-                rtc.ExportPhoto();
+            {
+                string type = CameraShooting();
+                sounds.PlaySoundCam();
+                
+            }
 
             if (sniperUI.activeSelf)
+            { 
                 Shoot();
+                sounds.PlaySoundShoot();
+                StatsManager.instance.timeShot++;
+            }
+        }
 
+        if(Input.GetKeyDown(KeyCode.E)) 
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit))
+            {
+                StartDay sd = hit.collider.gameObject.GetComponent<StartDay>();
+                if (sd != null) 
+                {
+                    sd.ActivateStuff();
+                }
+            }
         }
     }
+
 
     private void ResetUI()
     {
@@ -76,6 +126,57 @@ public class Shooting : MonoBehaviour
         {
             go.SetActive(false);
         }
+    }
+
+    public void TriggerCaughtUI()
+    {
+        StartCoroutine(ActivateForXSeconds(caughtPictureUI));
+    }
+
+    private string CameraShooting()
+    {
+
+        foreach(GameObject go in seenObjects)
+        {
+            if(go != null)
+            {
+                
+
+                BirdLogic birdLogic = go.GetComponent<BirdLogic>();
+                Shootable shootable = go.GetComponent<Shootable>();
+                if (birdLogic != null)
+                {
+                    if (!seenSpecies.Contains(birdLogic.Species))
+                    {
+                        StatsManager.instance.speciesDiscovered++;
+                        ScoreManager.instance.AddScore(10);
+                        seenSpecies.Add(birdLogic.Species);
+                        StartCoroutine(ActivateForXSeconds(newSpeciesUI));
+                        StatsManager.instance.newSpecies.Add( rtc.ExportPhoto("new_species_"));
+                    }
+                    
+                }
+                else if (shootable != null)
+                {
+                    shootable.CaughtDoingBadThings();
+                    if(shootable.Caught)
+                    {
+                        StatsManager.instance.touristsCaught++;
+                        StartCoroutine(ActivateForXSeconds(iSawThatUI));
+                        ScoreManager.instance.AddScore(5);
+                        shootable.caughtPicture = rtc.ExportPhoto("caught_");
+
+                        StatsManager.instance.caught.Add(shootable.caughtPicture);
+
+
+                    }
+                }
+
+            }
+            
+        }
+        StatsManager.instance.everythingElse.Add(rtc.ExportPhoto(""));
+        return "";
     }
 
     private void Shoot()
@@ -90,7 +191,12 @@ public class Shooting : MonoBehaviour
             if (temp != null)
             {
                 if (temp.BadGuy || temp.badPathing || temp.BadDog)
-                    StartCoroutine(ActivateForXSeconds(goodUI));
+                { 
+                    if(temp.BadGuy && temp.Caught)
+                        StartCoroutine(ActivateForXSeconds(caughtUI));
+
+                    Invoke(nameof(ActivateGoodUI), 0.02f);
+                }
                 else
                     StartCoroutine(ActivateForXSeconds(badUI));
 
@@ -99,11 +205,19 @@ public class Shooting : MonoBehaviour
         }
     }
 
+    private void ActivateGoodUI() => StartCoroutine(ActivateForXSeconds(goodUI));
+
     private IEnumerator ActivateForXSeconds(GameObject ui)
     {
 
         ui.SetActive(true);
         yield return wfs;
         ui.SetActive(false);
+    }
+
+    public void ResetShooting()
+    {
+        seenObjects = new HashSet<GameObject>();
+        seenSpecies = new List<string>();
     }
 }

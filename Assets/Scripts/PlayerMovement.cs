@@ -8,19 +8,25 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float minHeadDownAngle;
     [SerializeField] private float gravity;
 
-    private bool moving;
+    private bool moving = true;
     private bool hasSpeed;
 
     private CharacterController characterController;
     private Transform           head;
 
 
+
+    private void Awake()
+    {
+        moving = true;
+    }
+
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
         head = GetComponentInChildren<Camera>().transform;
 
-        moving = true;
+        
         hasSpeed = false;
 
     }
@@ -37,7 +43,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void HideCursor()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Locked;
+
+       
     }
 
     public void ShowCursor()
@@ -57,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
         {
             UpdatePlayerRotation();
             UpdateHeadRotation();
-            Move();
+            Move(); 
         }
         else
             hasSpeed = false;
@@ -108,9 +116,17 @@ public class PlayerMovement : MonoBehaviour
         verticalMouseSensitivity   = sensitivity;
     }
 
-    public void EnableMovement() => moving = true;
+    public void EnableMovement()
+    {
+        HideCursor();
+        moving = true;
+    }
 
-    public void DisableMovement() => moving = false;
+    public void DisableMovement()
+    {
+        ShowCursor();
+        moving = false;
+    }
 
     public float GetSensitivity()
     {

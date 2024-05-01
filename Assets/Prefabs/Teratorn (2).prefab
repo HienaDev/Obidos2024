@@ -1387,6 +1387,7 @@ MonoBehaviour:
   badLayer:
     serializedVersion: 2
     m_Bits: 0
+  badPathing: 0
 --- !u!114 &5943210644679961971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1402,6 +1403,7 @@ MonoBehaviour:
   timerStoodStill: {x: 10, y: 25}
   rangeToStopFlyingAnimation: 2.5
   speed: 5
+  species: 
 --- !u!136 &2682776355357733435
 CapsuleCollider:
   m_ObjectHideFlags: 0

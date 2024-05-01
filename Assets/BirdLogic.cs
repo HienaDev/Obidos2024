@@ -21,6 +21,9 @@ public class BirdLogic : MonoBehaviour
     private Vector3 initialPosition;
     private Transform targetPosition;
 
+    [SerializeField] private string species;
+    public string Species {  get { return species; } }
+
     private bool scared;
 
     // Start is called before the first frame update
@@ -39,6 +42,12 @@ public class BirdLogic : MonoBehaviour
         scared = false;
 
         targetPosition = BirdManager.instance.GetWaypoint();
+
+        if (species == "green") GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.green;
+        if (species == "red") GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.red;
+        if (species == "blue") GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.blue;
+        if (species == "yellow") GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.yellow;
+        if (species == "cyan") GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.cyan;
     }
 
     // Update is called once per frame
@@ -63,6 +72,7 @@ public class BirdLogic : MonoBehaviour
             if (Vector3.Distance(transform.position, targetPosition.position) < rangeToStopFlyingAnimation)
             {
                 animator.SetTrigger("Stop Flying");
+                
                 //Debug.Log(gameObject.name + "Not flying");
             }
 
@@ -91,6 +101,8 @@ public class BirdLogic : MonoBehaviour
                     
                     animator.ResetTrigger("Stop Flying");
                     //Debug.Log(gameObject.name + "remove trigger stop flying");
+
+                    transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, transform.eulerAngles.z);
                 }
             }
         }

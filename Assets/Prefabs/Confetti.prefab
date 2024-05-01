@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7537381112086360051}
   - component: {fileID: 7332649614528643313}
   - component: {fileID: 2565209134207533756}
+  - component: {fileID: 3860489930497587022}
   m_Layer: 0
   m_Name: Confetti
   m_TagString: Untagged
@@ -4900,3 +4901,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   x: 10
+--- !u!114 &3860489930497587022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8129691248796698504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f34a232e1a7a04787d0f3112cb4d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: caf72dc346571404293612802a7472c9, type: 3}

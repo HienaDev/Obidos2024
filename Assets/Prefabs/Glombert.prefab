@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 639129495711456758}
   - component: {fileID: 7661760634127687069}
   - component: {fileID: -8386882966070542266}
+  - component: {fileID: -6098429190066498149}
   m_Layer: 9
   m_Name: Glombert
   m_TagString: Untagged
@@ -142,6 +143,12 @@ MonoBehaviour:
   trash:
   - {fileID: 3848329786972146456, guid: d12430811d79c034bbe8a81f30d2acb3, type: 3}
   - {fileID: 8503153107172486484, guid: 84b76f687a51c1d41837d683f9287f0c, type: 3}
+  - {fileID: 922953626973617743, guid: 26f67877503b3334e95ed890accaeb07, type: 3}
+  - {fileID: 2369083368837818703, guid: 9f0b960a392a3ab4ebdf9aa28cf4c423, type: 3}
+  - {fileID: 6426598253545171273, guid: 8f8bd8146fdb12c42bccb8db2545100d, type: 3}
+  - {fileID: 6579947711293377736, guid: 76eb2de12538e894ebc9c1369f1980d6, type: 3}
+  - {fileID: 8790727965956944386, guid: 72a2c7e0a4514824c984208666a5409c, type: 3}
+  - {fileID: 27229078987204639, guid: 4599e572788a0c64ea36bfd9f5c35814, type: 3}
 --- !u!114 &2073569663418282452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,3 +228,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   badPathing: 0
+  caughtPicture: {fileID: 0}
+--- !u!114 &-6098429190066498149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5428618234460308427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f34a232e1a7a04787d0f3112cb4d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: b1cac911894e5774aa8c2b5fdf5e640e, type: 3}
+  - {fileID: 8300000, guid: 24404d381164095429a3883a4b37919f, type: 3}
+  - {fileID: 8300000, guid: 8eafaba76e376744fb8770ac8da075db, type: 3}
