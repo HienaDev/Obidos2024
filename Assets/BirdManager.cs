@@ -9,7 +9,9 @@ public class BirdManager : MonoBehaviour
     private bool[] occupied;
 
     [SerializeField] public Transform scarePoint;
-    public static BirdManager instance; 
+    public static BirdManager instance;
+
+    [SerializeField] private Transform[] birds;
 
 
     // Start is called before the first frame update
@@ -42,5 +44,22 @@ public class BirdManager : MonoBehaviour
     {
 
         occupied[System.Array.IndexOf(waypoints, waypoint)] = false;
+    }
+
+    public void ResetBirds()
+    {
+        for (int i = 0; i < occupied.Length; i++) { occupied[i] = false; }
+
+        for (int i = 0;i < birds.Length;i++) 
+        {
+            int slot = Random.Range(0, waypoints.Length);
+
+            if (!occupied[slot]) 
+            {
+                birds[i].position = waypoints[slot].position;
+                occupied[slot] = true;
+            }
+            
+        }
     }
 }

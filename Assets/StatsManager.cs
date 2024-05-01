@@ -209,6 +209,8 @@ public class StatsManager : MonoBehaviour
         Shooting.instance.ResetShooting();
         finalScore = 0;
 
+        BirdManager.instance.ResetBirds();
+
         if ( day % 3 == 2)
         {
             dLight.transform.eulerAngles = new Vector3(-5, dLight.transform.eulerAngles.y, dLight.transform.eulerAngles.z);
