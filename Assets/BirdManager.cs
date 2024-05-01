@@ -19,11 +19,7 @@ public class BirdManager : MonoBehaviour
         occupied = new bool[waypoints.Length];
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 
     public Transform GetWaypoint()
     {

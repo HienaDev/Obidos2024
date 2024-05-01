@@ -43,6 +43,7 @@ public class Shooting : MonoBehaviour
     private Sprite lastPicture;
 
     public static Shooting instance;
+
     
     private void Awake()
     {
@@ -93,13 +94,14 @@ public class Shooting : MonoBehaviour
             {
                 string type = CameraShooting();
                 sounds.PlaySoundCam();
-                lastPicture = rtc.ExportPhoto(type);
+                
             }
 
             if (sniperUI.activeSelf)
             { 
                 Shoot();
                 sounds.PlaySoundShoot();
+                StatsManager.instance.timeShot++;
             }
         }
 
@@ -146,10 +148,11 @@ public class Shooting : MonoBehaviour
                 {
                     if (!seenSpecies.Contains(birdLogic.Species))
                     {
+                        StatsManager.instance.speciesDiscovered++;
                         ScoreManager.instance.AddScore(10);
                         seenSpecies.Add(birdLogic.Species);
                         StartCoroutine(ActivateForXSeconds(newSpeciesUI));
-                        rtc.ExportPhoto("new_species_");
+                        StatsManager.instance.newSpecies.Add( rtc.ExportPhoto("new_species_"));
                     }
                     
                 }
@@ -158,18 +161,21 @@ public class Shooting : MonoBehaviour
                     shootable.CaughtDoingBadThings();
                     if(shootable.Caught)
                     {
+                        StatsManager.instance.touristsCaught++;
                         StartCoroutine(ActivateForXSeconds(iSawThatUI));
                         ScoreManager.instance.AddScore(5);
                         shootable.caughtPicture = rtc.ExportPhoto("caught_");
 
+                        StatsManager.instance.caught.Add(shootable.caughtPicture);
 
-                        
+
                     }
                 }
+
             }
             
         }
-
+        StatsManager.instance.everythingElse.Add(rtc.ExportPhoto(""));
         return "";
     }
 
@@ -207,5 +213,11 @@ public class Shooting : MonoBehaviour
         ui.SetActive(true);
         yield return wfs;
         ui.SetActive(false);
+    }
+
+    public void ResetShooting()
+    {
+        seenObjects = new HashSet<GameObject>();
+        seenSpecies = new List<string>();
     }
 }

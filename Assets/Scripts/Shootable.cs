@@ -65,7 +65,8 @@ public class Shootable : MonoBehaviour
         if (rpnpc != null)
         {
             badPathing = Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up) * -1, Mathf.Infinity, badLayer);
-            //Debug.Log(badPathing);
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.up) * -10, Color.red);
+            Debug.Log(badPathing);
         }
 
         beingSeen = CheckIfOnCamera();
@@ -85,6 +86,7 @@ public class Shootable : MonoBehaviour
 
     public void StartExplosion()
     {
+        StatsManager.instance.timesHit++;
         Instantiate(conffeti, transform.position, Quaternion.identity);
 
         if (BadGuy || badPathing || BadDog)
@@ -92,8 +94,14 @@ public class Shootable : MonoBehaviour
             Debug.Log(BadGuy);
             Debug.Log(badPathing);
             Debug.Log(BadDog);
-            if(BadGuy && Caught)
+
+            if (BadDog) StatsManager.instance.dogsStopped++;
+            if(badPathing || BadGuy) StatsManager.instance.trespassersKilled++;
+
+            if (BadGuy && Caught)
             {
+                
+
                 Shooting.instance.caughtPictureUI.GetComponent<Image>().sprite = caughtPicture;
                 Shooting.instance.TriggerCaughtUI();
                 ScoreManager.instance.AddScore(20);
@@ -104,6 +112,12 @@ public class Shootable : MonoBehaviour
         }
         else
         {
+            BirdLogic bl = GetComponent<BirdLogic>();
+            ScareBirds sb = GetComponent<ScareBirds>();
+
+            if (bl != null) { StatsManager.instance.birdsKilled++; }
+            else StatsManager.instance.touristKilled++;
+
             ScoreManager.instance.AddScore(-10);
         }
 

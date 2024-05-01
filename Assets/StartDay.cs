@@ -5,7 +5,7 @@ using UnityEngine;
 public class StartDay : MonoBehaviour
 {
     [SerializeField] private GameObject[] objectsToStart;
-
+    [SerializeField] private float timer = 240;
 
     public void ActivateStuff()
     {
@@ -13,6 +13,7 @@ public class StartDay : MonoBehaviour
         {
             obj.SetActive(true);
         }
+        TimerUI.instance.StartTimer(timer);
         GetComponent<Animator>().SetTrigger("Shrink");
     }
 

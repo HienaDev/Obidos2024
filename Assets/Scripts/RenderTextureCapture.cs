@@ -39,8 +39,5 @@ public class RenderTextureCapture : MonoBehaviour
         return tex;
     }
 
-    private void Update()
-    {
-        image.GetComponent<Image>().sprite = sprites[sprites.Count-1];
-    }
+
 }

@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
 {
 
     public static ScoreManager instance;
-    private int score;
+    public int score;
 
     private TextMeshProUGUI textMeshProUGUI;
     [SerializeField] private GameObject lostScore;

@@ -42,8 +42,8 @@ public class SpawnTrash : MonoBehaviour
 
         if (Random.Range(0, 100) < chanceThrowTrash)
         {
-            sounds.PlaySound();
-            Instantiate(trash[Random.Range(0, trash.Length)], transform.position, Quaternion.identity);
+            sounds.PlayLoudSound();
+            Instantiate(trash[Random.Range(0, trash.Length)], transform.position, Quaternion.identity, TrashManager.instance.transform);
             GetComponent<Shootable>().TurnBadGuy();
         }
     }
