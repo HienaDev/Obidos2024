@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 3cb4177b99a3e8344a851dba3dd28399, type: 3}
   species: Ardea cinerea
-  description: 'Stern but welcoming demeanor, gray feathers and orange/black beak.
+  description: Stern but welcoming demeanor, gray feathers and orange/black beak.
     Highly sociable indevidual. Subject lives in a high density apartment suburb,
-    with his family. In a monogamous relationship. '
+    with his family. In a monogamous relationship.
   habits:
   - Partial Migrant
   - Carnivore/Pescivore

@@ -15,14 +15,18 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: f897c9a20aa4db34396f729ace535848, type: 3}
   species: Phoenicopterus
   description: Tall indevidual with striking pink features. A social butterfly known
-    for her flamboyant style. Works and lives by the beach, at a local Waffle Nest.
+    for her flamboyant style. Works and lives by the water bank, at a local Waffle
+    Nest.
   habits:
   - Nomad
   - Malacophage
   - Partying
   height: 150
   crimes:
+  - Drug Trafficking
   - Public Disturbance
   crimesDescription:
+  - Subject traded and consumed illicit substances with dangerous plumage colour
+    changing effects.
   - Subject hosted a party with several hundreds of guests, for which police was
     called for excessive noise.
