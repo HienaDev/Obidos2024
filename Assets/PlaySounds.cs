@@ -7,6 +7,8 @@ public class PlaySounds : MonoBehaviour
 
     [SerializeField] private AudioClip[] audioClips;
     private AudioSource audioSource;
+    public AudioSource AudioSource { get { return audioSource; } }
+    [SerializeField] private float volume = 1f;
     // Start is called before the first frame update
 
 

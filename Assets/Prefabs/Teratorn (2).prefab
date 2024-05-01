@@ -1324,6 +1324,7 @@ GameObject:
   - component: {fileID: 7227672299367978859}
   - component: {fileID: 5943210644679961971}
   - component: {fileID: 2682776355357733435}
+  - component: {fileID: -717531802261587679}
   m_Layer: 11
   m_Name: Teratorn (2)
   m_TagString: Untagged
@@ -1388,6 +1389,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   badPathing: 0
+  caughtPicture: {fileID: 0}
 --- !u!114 &5943210644679961971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1404,6 +1406,7 @@ MonoBehaviour:
   rangeToStopFlyingAnimation: 2.5
   speed: 5
   species: 
+  soundCooldown: {x: 3, y: 10}
 --- !u!136 &2682776355357733435
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1427,6 +1430,28 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.45, z: 0}
+--- !u!114 &-717531802261587679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3212832220247294279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f34a232e1a7a04787d0f3112cb4d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: 491ebe05144f1bc49bf869031b49af74, type: 3}
+  - {fileID: 8300000, guid: bd781dbda5d9ce64ab0a1a4bceb88bf4, type: 3}
+  - {fileID: 8300000, guid: 32c6a933307996f49a7bf1f4929b7109, type: 3}
+  - {fileID: 8300000, guid: 87ce41a25aa815c428732372ab2f4f16, type: 3}
+  - {fileID: 8300000, guid: 0ce4799fd30c2844ea77807985a20904, type: 3}
+  - {fileID: 8300000, guid: 4fae4ac72bf8f5d409b4f6807044fbc1, type: 3}
+  - {fileID: 8300000, guid: b20f38bef168daf43808edcf025b5762, type: 3}
+  - {fileID: 8300000, guid: 09b5a4d5790ffaa498431ba91435806a, type: 3}
+  volume: 1
 --- !u!1 &3383263282987022365
 GameObject:
   m_ObjectHideFlags: 0
