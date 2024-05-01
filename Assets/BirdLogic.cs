@@ -72,6 +72,7 @@ public class BirdLogic : MonoBehaviour
             if (Vector3.Distance(transform.position, targetPosition.position) < rangeToStopFlyingAnimation)
             {
                 animator.SetTrigger("Stop Flying");
+                
                 //Debug.Log(gameObject.name + "Not flying");
             }
 
@@ -100,6 +101,8 @@ public class BirdLogic : MonoBehaviour
                     
                     animator.ResetTrigger("Stop Flying");
                     //Debug.Log(gameObject.name + "remove trigger stop flying");
+
+                    transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, transform.eulerAngles.z);
                 }
             }
         }
