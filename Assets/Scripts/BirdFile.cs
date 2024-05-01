@@ -14,6 +14,7 @@ public class BirdFile : MonoBehaviour
     [SerializeField] private TextMeshProUGUI suspectHeight;
     [SerializeField] private TextMeshProUGUI suspectDescription;
     [SerializeField] private TextMeshProUGUI suspectHabits;
+    [SerializeField] private GameObject documentFiles;
     private Bird suspectBird;
     private Image photo;
     private 
@@ -37,10 +38,12 @@ public class BirdFile : MonoBehaviour
         
     public void QuitDocument()
     {
-        gameObject.SetActive(false);
+        documentFiles.SetActive(false);
     }
     public void UpdateDocument()
     {
+        string habits = "";
+
         suspectBird = suspectManager.SelectedBird;
 
         photo.sprite = suspectBird.sprite;
@@ -51,8 +54,9 @@ public class BirdFile : MonoBehaviour
 
         foreach (string habit in suspectBird.habits)
         {
-            suspectHabits.text += $"{habit} ;\n";
+            habits += $"{habit} ;\n";
         }
+        suspectHabits.text = habits;
     }
 
     
