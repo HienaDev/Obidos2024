@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "\xC1guia-sapeira"
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 69726d49bcb6789468b3684741cc44d8, type: 3}
+  animationTrigger: Tartaranhao
   species: Circus aeruginosus
   description: Robust build and brown plumage. Employed as a security coordinator
     for the local wildlife preserve. Lives in the rural area with his family.

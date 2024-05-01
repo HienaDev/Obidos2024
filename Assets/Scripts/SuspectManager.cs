@@ -37,6 +37,7 @@ public class SuspectManager : MonoBehaviour
         foreach (GameObject mug in mugshotList)
         {
             buttonImage = mug.GetComponent<Image>();
+            mug.GetComponent<Animator>().SetTrigger(birdList[intBird].animationTrigger);
             mug.GetComponentInChildren<TextMeshProUGUI>().text = birdList[intBird].name;
             buttonImage.sprite = birdList[intBird].sprite;
 

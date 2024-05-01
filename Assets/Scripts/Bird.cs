@@ -6,6 +6,7 @@ public class Bird :ScriptableObject
 {
     // sprite
     public Sprite sprite;
+    public string animationTrigger;
     // description
     public string species;
     public string description;

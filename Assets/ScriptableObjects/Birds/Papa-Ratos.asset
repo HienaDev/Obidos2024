@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Papa-Ratos
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 0e8af7cb4c34648458b77208917df3c5, type: 3}
+  animationTrigger: PapaRatos
   species: Ardeola ralloides
   description: Antisocial indevidual with coffee brown, orange and white feathers,
     with a long neck. Yellow eyes and blue beak. Often going unoticed until someone

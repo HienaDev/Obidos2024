@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Colhereiro
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 74bf19299e4e2084eaee074fbd8f6991, type: 3}
+  animationTrigger: Colhereiro
   species: Platalea
   description: White male bird, middle aged, most often seen wearing coral clothing.
     A soup line cook at local restaurant Antonius. Shows signs of having a compulsive
