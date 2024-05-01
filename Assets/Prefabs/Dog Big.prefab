@@ -943,6 +943,7 @@ GameObject:
   - component: {fileID: 1086633381010208477}
   - component: {fileID: 3684142205044307223}
   - component: {fileID: 5004151728157675542}
+  - component: {fileID: 3623985688551357337}
   m_Layer: 0
   m_Name: Dog Big
   m_TagString: Untagged
@@ -1062,6 +1063,20 @@ MonoBehaviour:
   birdLayer:
     serializedVersion: 2
     m_Bits: 2048
+--- !u!114 &3623985688551357337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3179276873869652109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f34a232e1a7a04787d0f3112cb4d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: 6af429594c457be4e9cd29d303a09b1a, type: 3}
 --- !u!1 &3487344987912359272
 GameObject:
   m_ObjectHideFlags: 0

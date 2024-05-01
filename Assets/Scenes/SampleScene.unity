@@ -1919,7 +1919,7 @@ Light:
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 5000
+  m_ColorTemperature: 3994
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -4416,6 +4416,7 @@ GameObject:
   - component: {fileID: 877455319}
   - component: {fileID: 877455320}
   - component: {fileID: 877455321}
+  - component: {fileID: 877455322}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4611,6 +4612,24 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: f7901f98c8bae8545aad75e306c7591b, type: 3}
   image: {fileID: 214828470}
+--- !u!114 &877455322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877455312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61eca9abd6e9667429ed8bfe587ffb74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClipsCam:
+  - {fileID: 8300000, guid: e5b90b72073c1174e90f8ca053e040ae, type: 3}
+  audioClipsShoot:
+  - {fileID: 8300000, guid: 8aa28f11ecdaf9445b637be2605b3a8f, type: 3}
+  - {fileID: 8300000, guid: 97c478e6ce66eeb48b72984b0fc624b4, type: 3}
+  - {fileID: 8300000, guid: d5bb694dcb02962438b50b658b6b6c12, type: 3}
 --- !u!1 &896965479
 GameObject:
   m_ObjectHideFlags: 0

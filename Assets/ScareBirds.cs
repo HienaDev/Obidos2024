@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,6 +19,7 @@ public class ScareBirds : MonoBehaviour
     private float defaultSpeed;
 
     private Shootable shootScript;
+    private PlaySounds sounds;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,8 @@ public class ScareBirds : MonoBehaviour
         Sitting = false;
         justSat = Time.time;
         animator.SetBool("Walking", true);
+
+        sounds = GetComponent<PlaySounds>();
 
         shootScript = GetComponent<Shootable>();
 
@@ -42,6 +46,7 @@ public class ScareBirds : MonoBehaviour
             animator.SetBool("Walking", true);
             Sitting = false;
             shootScript.BadDog = false;
+            sounds.PlaySound();
             ScoreManager.instance.AddScore(-20);
             GetComponent<NavMeshAgent>().speed = defaultSpeed;
         }

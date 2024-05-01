@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Shooting : MonoBehaviour
@@ -35,7 +36,7 @@ public class Shooting : MonoBehaviour
     public static HashSet<GameObject> seenObjects;
     public static List<string> seenSpecies;
 
-
+    private PlaySoundsPlayer sounds;
     private void Awake()
     {
         seenObjects = new HashSet<GameObject>();
@@ -54,6 +55,8 @@ public class Shooting : MonoBehaviour
         uiTools = new List<GameObject>();
         uiTools.Add(cameraUI);
         uiTools.Add(sniperUI);
+
+        sounds = GetComponent<PlaySoundsPlayer>();
 
         zoomScript = GetComponent<SniperZoom>();
     }
@@ -80,12 +83,15 @@ public class Shooting : MonoBehaviour
             if(cameraUI.activeSelf)
             {
                 string type = CameraShooting();
+                sounds.PlaySoundCam();
                 rtc.ExportPhoto(type);
             }
 
             if (sniperUI.activeSelf)
+            { 
                 Shoot();
-
+                sounds.PlaySoundShoot();
+            }
         }
     }
 

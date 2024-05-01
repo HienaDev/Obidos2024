@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnTrash : MonoBehaviour
@@ -9,6 +10,7 @@ public class SpawnTrash : MonoBehaviour
     private float justThrewTrash;
 
     [SerializeField] private GameObject[] trash;
+    private PlaySounds sounds;
 
     // Start is called before the first frame update
     void Start()
@@ -35,8 +37,11 @@ public class SpawnTrash : MonoBehaviour
     {
         justThrewTrash = Time.time;
 
+
+
         if (Random.Range(0, 100) < chanceThrowTrash)
         {
+            sounds.PlaySound();
             Instantiate(trash[Random.Range(0, trash.Length)], transform.position, Quaternion.identity);
             GetComponent<Shootable>().TurnBadGuy();
         }
