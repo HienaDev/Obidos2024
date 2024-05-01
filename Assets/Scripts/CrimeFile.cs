@@ -9,6 +9,7 @@ public class CrimeFile : MonoBehaviour
     [SerializeField] private SuspectManager suspectManager;
     [SerializeField] private TextMeshProUGUI crimeName;
     [SerializeField] private TextMeshProUGUI crimeDescription;
+    [SerializeField] private GameObject documentFiles;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,7 @@ public class CrimeFile : MonoBehaviour
     }
     public void QuitDocument()
     {
-        gameObject.SetActive(false);
+        documentFiles.SetActive(false);
     }
     public void UpdateDocument()
     {

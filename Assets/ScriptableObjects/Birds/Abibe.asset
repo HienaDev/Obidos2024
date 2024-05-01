@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: b14c8e68ea5c2d540b670b1d6bc59c17, type: 3}
   species: Vanellus vanellus
-  description: 'Noisy and conspicuous indevidual. Green and purple feathers in a
-    ponytail. Lives in a rural setting inside a gated community where she is the
-    HOA president. Often goes out of her way to make flashy displays.  '
+  description: Noisy and conspicuous indevidual. Green and purple feathers in a ponytail.
+    Lives in a rural setting inside a gated community where she is the HOA president.
+    Often goes out of her way to make flashy displays.
   habits:
   - 'Insectivore  '
   height: 41

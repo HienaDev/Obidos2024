@@ -23,7 +23,13 @@ MonoBehaviour:
   - Partying
   height: 69
   crimes:
-  - Aggrevated assault and robbery
+  - Aggrevated Assault and Robbery
+  - Trespassing and Porch Piracy
+  - Unpaid child support
   crimesDescription:
   - Subject assaulted other customers while shopping at Treeget over a can of sardines,
     yelling and fleeing teh scene with it.
+  - Subject accused of repeatedly trespassing in private property to steal groceries
+    delievered to bird's doors.
+  - Subject neglected parental responsability for multiple nests along the local
+    water bank.

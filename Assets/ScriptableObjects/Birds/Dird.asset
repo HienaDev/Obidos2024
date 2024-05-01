@@ -12,14 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8300819f3176764ba813c6b7e42a5ca, type: 3}
   m_Name: Dird
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: c36b09a90a613bd468528d11a773f019, type: 3}
+  sprite: {fileID: 21300000, guid: 2781e044261cae547834da0e0fd56ba0, type: 3}
   species: Diogius Andradium
   description: A suspiciously shiny bird.
   habits:
   - Flying
   - Eating
+  - Hating Artists
   height: 1.2
   crimes:
-  - Impersonating god
+  - Tax Evasion
+  - Killing an artist
   crimesDescription:
   - Subject formed an unregulated cult as the leader, making much untaxed profit.
+  - Subject killed an artist.

@@ -15,10 +15,14 @@ public class SuspectManager : MonoBehaviour
     [SerializeField] private Animator birdFileAnim;
     [SerializeField] private GameObject birdFileScene;
     [SerializeField] private GameObject crimeFileScene;
+    [SerializeField] private GameObject veredictScene;
+    [SerializeField] private GameObject veredictPhoto;
+    [SerializeField] private GameObject selectImage;
     [SerializeField] private Button guiltyButton;
     private Bird[] birdList = new Bird[5];
     private Image buttonImage;
     public Bird SelectedBird { get; private set; }
+    private GameObject selectedButton = null;
     private Bird guiltyBird;
     public string SelectedCrime { get; private set; }
     public string CrimeDescription { get; private set; }
@@ -52,6 +56,8 @@ public class SuspectManager : MonoBehaviour
         {
             guiltyButton.enabled = false;
         }
+
+        UpdateSelectPosition();
     }
     public void ChooseBirds()
     {
@@ -66,13 +72,13 @@ public class SuspectManager : MonoBehaviour
     }
     private void ChooseCrime()
     {
-        int randInt = Random.Range(0,1);
+        int randInt = Random.Range(0,guiltyBird.crimes.Length);
         SelectedCrime = guiltyBird.crimes[randInt];
-        CrimeDescription = guiltyBird.crimes[randInt];
+        CrimeDescription = guiltyBird.crimesDescription[randInt];
     }
     private void ChooseRandomBird(int listInd)
     {
-        int randInt = Random.Range(0,allBirdsList.Count-1);
+        int randInt = Random.Range(0,allBirdsList.Count);
 
         if (allBirdsList[randInt] != null)
         {
@@ -119,6 +125,7 @@ public class SuspectManager : MonoBehaviour
                 birdFileAnim.SetTrigger("Hide");
             birdFileAnim.SetTrigger("Show");
             SelectedBird = birdList[0];
+            selectedButton = mugshotList[0];
             debugSelect.text = $"Selected: {SelectedBird.name}";
             ResetSelectExceptOne(0);
         }
@@ -139,6 +146,7 @@ public class SuspectManager : MonoBehaviour
                 birdFileAnim.SetTrigger("Hide");
             birdFileAnim.SetTrigger("Show");
             SelectedBird = birdList[1];
+            selectedButton = mugshotList[1];
             debugSelect.text = $"Selected: {SelectedBird.name}";
             ResetSelectExceptOne(1);
         }
@@ -159,6 +167,7 @@ public class SuspectManager : MonoBehaviour
                 birdFileAnim.SetTrigger("Hide");
             birdFileAnim.SetTrigger("Show");
             SelectedBird = birdList[2];
+            selectedButton = mugshotList[2];
             debugSelect.text = $"Selected: {SelectedBird.name}";
             ResetSelectExceptOne(2);
         }
@@ -179,6 +188,7 @@ public class SuspectManager : MonoBehaviour
                 birdFileAnim.SetTrigger("Hide");
             birdFileAnim.SetTrigger("Show");
             SelectedBird = birdList[3];
+            selectedButton = mugshotList[3];
             debugSelect.text = $"Selected: {SelectedBird.name}";
             ResetSelectExceptOne(3);
         }
@@ -199,6 +209,7 @@ public class SuspectManager : MonoBehaviour
                 birdFileAnim.SetTrigger("Hide");
             birdFileAnim.SetTrigger("Show");
             SelectedBird = birdList[4];
+            selectedButton = mugshotList[4];
             debugSelect.text = $"Selected: {SelectedBird.name}";
             ResetSelectExceptOne(4);
         }
@@ -223,11 +234,26 @@ public class SuspectManager : MonoBehaviour
     {
         if (SelectedBird == guiltyBird)
         {
-            debugWin.text = "YOU WON!!";
+            debugWin.text = "YOU WERE RIGHT!";
         }
         else 
         {
-            debugWin.text = "YOU LOST!!";
+            debugWin.text = "YOU WERE WRONG.";
         }
+        veredictScene.SetActive(true);
+        veredictPhoto.GetComponent<Image>().sprite = SelectedBird.sprite;
+    }
+    private void UpdateSelectPosition()
+    {
+        if (CheckIfOtherTrue())
+        {
+            selectImage.SetActive(true);
+            selectImage.transform.position = selectedButton.transform.position;
+        }
+        else
+        {
+            selectImage.SetActive(false);
+        }
+        
     }
 }
