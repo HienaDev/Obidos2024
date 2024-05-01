@@ -42,6 +42,8 @@ public class BirdLogic : MonoBehaviour
 
         lerpValue = 0;
 
+        
+
         initialPosition = transform.position;
 
         sounds = GetComponent<PlaySounds>();
