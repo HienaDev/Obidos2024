@@ -202,12 +202,15 @@ public class StatsManager : MonoBehaviour
     {
         day++;
         playerScript.EnableMovement();
-        TimerUI.instance.StartTimer(60);
+        TimerUI.instance.StartTimer(240);
         
         spawner.ResetNPCS();
         birds.SetActive(true);
         Shooting.instance.ResetShooting();
         finalScore = 0;
+
+        //Shooting.instance.gameObject.transform.position = new Vector3 (0, -1, 2);
+        //0 -1 2
 
         BirdManager.instance.ResetBirds();
 
