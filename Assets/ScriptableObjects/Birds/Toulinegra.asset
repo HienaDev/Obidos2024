@@ -15,9 +15,9 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 7a37d334e80544c4aaff615413e76fa2, type: 3}
   animationTrigger: Toutinegra
   species: Sylvia atricapilla
-  description: Middle-aged indevidual, works part-time as a music teacher at a local
-    primary school. Usually seen wearing a black hat. Tense behaviour noted after
-    familly member brutally murdered.
+  description: Middle-aged individual, works part-time as a music teacher at a local
+    primary school. Usually seen wearing a black hat. Tense behavior noted after
+    a family member was brutally murdered.
   habits:
   - Insectivore
   - Singing

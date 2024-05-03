@@ -1231,6 +1231,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1623033567}
+        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1623033565}
         m_TargetAssemblyTypeName: CrimeFile, Assembly-CSharp
         m_MethodName: QuitDocument
@@ -1511,6 +1523,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1957778930}
+        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &400977904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1758,7 +1782,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1830,7 +1854,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fcc267a14d071e64ca71b09e0355489b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.02
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2083,6 +2107,7 @@ GameObject:
   - component: {fileID: 580566815}
   - component: {fileID: 580566814}
   - component: {fileID: 580566813}
+  - component: {fileID: 580566816}
   m_Layer: 5
   m_Name: Guilty
   m_TagString: Untagged
@@ -2155,6 +2180,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 580566816}
+        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1957778929}
         m_TargetAssemblyTypeName: SuspectManager, Assembly-CSharp
         m_MethodName: AccuseBird
@@ -2205,6 +2242,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580566811}
   m_CullTransparentMesh: 1
+--- !u!114 &580566816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580566811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6558d9b5cf32bf246b6f06e8314f2630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundToPlay: {fileID: 8300000, guid: 11323998fbbf14d4e91b39479013f4f4, type: 3}
 --- !u!1 &599547730
 GameObject:
   m_ObjectHideFlags: 0
@@ -2504,6 +2554,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1957778929}
         m_TargetAssemblyTypeName: SuspectManager, Assembly-CSharp
         m_MethodName: SelectBird1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1957778930}
+        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
+        m_MethodName: PlayAudio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3394,6 +3456,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1957778929}
         m_TargetAssemblyTypeName: SuspectManager, Assembly-CSharp
         m_MethodName: SelectBird5
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1957778930}
+        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
+        m_MethodName: PlayAudio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5321,6 +5395,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1957778930}
+        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1343013127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5564,14 +5650,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4056604, g: 0.2316563, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 08bdb4778743e95468f5647b0ae35746, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6020,6 +6106,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1957778929}
         m_TargetAssemblyTypeName: SuspectManager, Assembly-CSharp
         m_MethodName: SelectBird2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1957778930}
+        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
+        m_MethodName: PlayAudio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6541,14 +6639,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4056604, g: 0.2316563, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 08bdb4778743e95468f5647b0ae35746, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6577,6 +6675,7 @@ GameObject:
   - component: {fileID: 1623033564}
   - component: {fileID: 1623033565}
   - component: {fileID: 1623033566}
+  - component: {fileID: 1623033567}
   m_Layer: 5
   m_Name: CrimeFileScene
   m_TagString: Untagged
@@ -6641,6 +6740,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1623033567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623033563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6558d9b5cf32bf246b6f06e8314f2630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundToPlay: {fileID: 8300000, guid: 21ec0fdd3b7dcde4f87ac82433299d42, type: 3}
 --- !u!1 &1662118977
 GameObject:
   m_ObjectHideFlags: 0
@@ -7764,6 +7876,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1957778928}
   - component: {fileID: 1957778929}
+  - component: {fileID: 1957778930}
   m_Layer: 5
   m_Name: BirdLineUp
   m_TagString: Untagged
@@ -7834,6 +7947,19 @@ MonoBehaviour:
   veredictPhoto: {fileID: 691503416}
   selectImage: {fileID: 329437097}
   guiltyButton: {fileID: 580566813}
+--- !u!114 &1957778930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957778927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6558d9b5cf32bf246b6f06e8314f2630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundToPlay: {fileID: 8300000, guid: e94397df9eed9934dad2741633db1d83, type: 3}
 --- !u!1 &1968141197
 GameObject:
   m_ObjectHideFlags: 0
@@ -7918,6 +8044,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2050076297}
+        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2050076296}
         m_TargetAssemblyTypeName: BirdFile, Assembly-CSharp
         m_MethodName: QuitDocument
@@ -8212,6 +8350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2050076295}
   - component: {fileID: 2050076296}
+  - component: {fileID: 2050076297}
   m_Layer: 5
   m_Name: BirdFileScene
   m_TagString: Untagged
@@ -8259,6 +8398,19 @@ MonoBehaviour:
   suspectDescription: {fileID: 1982794969}
   suspectHabits: {fileID: 771919181}
   documentFiles: {fileID: 148972272}
+--- !u!114 &2050076297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050076294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6558d9b5cf32bf246b6f06e8314f2630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundToPlay: {fileID: 8300000, guid: 21ec0fdd3b7dcde4f87ac82433299d42, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

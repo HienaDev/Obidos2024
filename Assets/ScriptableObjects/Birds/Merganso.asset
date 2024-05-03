@@ -15,10 +15,10 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: c6aaf13551504c44db05a0611534373d, type: 3}
   animationTrigger: Merganso
   species: Mergus merganser
-  description: 'Resident in the slums and member of a local gang. Green and white
+  description: Resident in the slums and member of a local gang. Green and white
     feathers with a red beak, mullet hairstyle and appears to have had a serated
     beak procedure. Father to several dozens of  children, mostly from different
-    mothers. '
+    mothers.
   habits:
   - Diving
   - Partying
@@ -29,8 +29,8 @@ MonoBehaviour:
   - Unpaid child support
   crimesDescription:
   - Subject assaulted other customers while shopping at Treeget over a can of sardines,
-    yelling and fleeing teh scene with it.
-  - Subject accused of repeatedly trespassing in private property to steal groceries
-    delievered to bird's doors.
-  - Subject neglected parental responsability for multiple nests along the local
+    yelling and fleeing the scene with it.
+  - Subject accused of repeatedly trespassing on private property to steal groceries
+    delivered to bird's doors.
+  - Subject neglected parental responsibility for multiple nests along the local
     water bank.

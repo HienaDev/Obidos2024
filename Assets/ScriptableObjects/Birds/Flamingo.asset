@@ -15,9 +15,9 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: f897c9a20aa4db34396f729ace535848, type: 3}
   animationTrigger: Flamingo
   species: Phoenicopterus
-  description: Tall indevidual with striking pink features. A social butterfly known
+  description: 'Tall individual with striking pink features. A social butterfly known
     for her flamboyant style. Works and lives by the water bank, at a local Waffle
-    Nest.
+    Nest. '
   habits:
   - Nomad
   - Malacophage
@@ -29,5 +29,5 @@ MonoBehaviour:
   crimesDescription:
   - Subject traded and consumed illicit substances with dangerous plumage colour
     changing effects.
-  - Subject hosted a party with several hundreds of guests, for which police was
+  - Subject hosted a party with several hundreds of guests, for which police were
     called for excessive noise.

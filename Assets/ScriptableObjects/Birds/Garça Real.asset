@@ -16,7 +16,7 @@ MonoBehaviour:
   animationTrigger: GarcaReal
   species: Ardea cinerea
   description: Stern but welcoming demeanor, gray feathers and orange/black beak.
-    Highly sociable indevidual. Subject lives in a high density apartment suburb,
+    Highly sociable individual. Subject lives in a high density apartment suburb,
     with his family. In a monogamous relationship.
   habits:
   - Partial Migrant
@@ -27,7 +27,7 @@ MonoBehaviour:
   - Property Damage while DUI
   - Arson
   crimesDescription:
-  - Subject crashed into neighboors apartments while flying, after going for a drink
+  - Subject crashed into neighbors apartments while flying, after going for a drink
     with coworkers.
-  - Subject inadvertently caused fire damadge to private property after attempting
-    to settle over flamable material.
+  - Subject inadvertently caused fire damage to private property after attempting
+    to settle over flammable material.
