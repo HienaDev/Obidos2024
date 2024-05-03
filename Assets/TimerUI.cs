@@ -28,6 +28,12 @@ public class TimerUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Alpha5)) 
+        {
+            timer = 10;
+        }
+
         if(running && timer > 0)
         {
             timer -= Time.deltaTime;

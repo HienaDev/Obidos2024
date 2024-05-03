@@ -26,6 +26,11 @@ public class BirdLogic : MonoBehaviour
 
     private bool scared;
 
+    [SerializeField] private Vector2 soundCooldown;
+    private float soundCooldownValue;
+    private PlaySounds sounds;
+    private float justSounded;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +42,15 @@ public class BirdLogic : MonoBehaviour
 
         lerpValue = 0;
 
+        
+
         initialPosition = transform.position;
+
+        sounds = GetComponent<PlaySounds>();
+
+        justSounded = Time.time;
+        soundCooldownValue = Random.Range(soundCooldown.x, soundCooldown.y);
+        sounds.AudioSource.volume = 0.8f;
 
         scared = false;
 
@@ -53,6 +66,13 @@ public class BirdLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(Time.time - justSounded > soundCooldownValue)
+        {
+            justSounded = Time.time;
+            soundCooldownValue = Random.Range(soundCooldown.x, soundCooldown.y);
+            sounds.PlaySound();
+        }
 
         if (Time.time - justLanded > timerStanding && !flying)
         {
